@@ -19,7 +19,7 @@ TH1D *Muon_eta = new TH1D("Muon_eta","Muon_eta",50,-3,3);
 void SetAddressHisto(TTree* t); //function to set TTress address
 
 void PlotPreSelection(){
-  TCanvas* c= new TCanvas("c","c",1000,1800);
+  TCanvas* c= new TCanvas("c","c",1800,1000);
   c->Divide(3,1);
   c->cd(1);
 
@@ -43,6 +43,7 @@ void PlotPreSelection(){
          Muon_phi->Fill(lep_phi[i]);
        }
      }
+     cout<<"run number: "<<*chEl<<endl;
      chEl ++;
   }
   Muon_pt->Draw();
