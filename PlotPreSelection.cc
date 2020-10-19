@@ -35,6 +35,7 @@ for(int i=0;i<chain->GetEntry(); i++){
          Muon_eta->Fill(lep_eta[i]);
          Muon_phi->Fill(lep_phi[i]);
        }
+     }
   Muon_pt->Draw();
   c->cd(2);
   Muon_eta->Draw();
@@ -42,6 +43,7 @@ for(int i=0;i<chain->GetEntry(); i++){
   Muon_phi->Draw();
   c->SaveAs("PlotPreSelection.png");
 }
+
 
 //define function SetAddress()
 void SetAddressHisto(TTree* t){
