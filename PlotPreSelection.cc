@@ -12,6 +12,10 @@ using namespace std;
 //declar some variables
 std::vector<int> lep_id;
 std::vector<float> lep_pt, lep_eta, lep_phi, lep_mass;
+TH1D *Muon_pt = new TH1D("Muon_pt","Muon_pt",50,15,100);
+TH1D *Muon_phi = new TH1D("Muon_phi","Muon_phi",50,-TMath::Pi(),TMath::Pi());
+TH1D *Muon_eta = new TH1D("Muon_eta","Muon_eta",50,-3,3);
+
 void SetAddressHisto(TTree* t); //function to set TTress address
 
 void PlotPreSelection(){
@@ -52,8 +56,4 @@ void SetAddressHisto(TTree* t){
   t->SetBranchAddress("lep_eta",&lep_eta);
   t->SetBranchAddress("lep_phi",&lep_phi);
   t->SetBranchAddress("lep_mass",&lep_mass);
-
-  TH1D *Muon_pt = new TH1D("Muon_pt","Muon_pt",50,15,100);
-  TH1D *Muon_phi = new TH1D("Muon_phi","Muon_phi",50,-TMath::Pi(),TMath::Pi());
-  TH1D *Muon_eta = new TH1D("Muon_eta","Muon_eta",50,-3,3);
 }
