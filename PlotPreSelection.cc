@@ -43,9 +43,10 @@ void PlotPreSelection(){
          Muon_phi->Fill(lep_phi[i]);
        }
      }
-     cout<<"run number: "<<*chEl<<endl;
-     *chEl ++;
+     cout<<"run number: "<<chEl<<endl;
+     chEl ++;
   }
+
   Muon_pt->Draw();
   c->cd(2);
   Muon_eta->Draw();
