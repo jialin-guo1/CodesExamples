@@ -7,6 +7,9 @@
 #include "TH1D.h"
 #include "TMath.h"
 
+//declar some variables
+vector<int> lep_id;
+vector<float> lep_pt, lep_eta, lep_phi, lep_mass;
 void SetAddressHisto(TTree* t); //function to set TTress address
 
 void PlotPreSelection(){
@@ -15,7 +18,7 @@ void PlotPreSelection(){
 
 //chain all the files
   TChain* chain = new TChain("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/SingleMuon/crab_SingleMuon_Run2018A-17Sep2018-v2/201018_142705/0000");
-  chain.Add("*.root");
+  chain->Add("*.root");
 
 // loop over the TFiles that have been added to this chain
   TObjArray *fileElements=chain->GetListOfFiles();
