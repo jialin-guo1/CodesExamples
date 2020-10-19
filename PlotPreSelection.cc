@@ -20,7 +20,8 @@ void SetAddressHisto(TTree* t); //function to set TTress address
 
 void PlotPreSelection(){
   TCanvas* c= new TCanvas("c","c",1000,1000);
-  c->cd();
+  c->Divide(3,1);
+  c->cd(1);
 
 //chain all the files
   TChain* chain = new TChain("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/SingleMuon/crab_SingleMuon_Run2018A-17Sep2018-v2/201018_142705/0000");
@@ -44,7 +45,9 @@ void PlotPreSelection(){
      }
   }
   Muon_pt->Draw();
+  c->cd(2);
   Muon_eta->Draw();
+  c->cd(3)
   Muon_phi->Draw();
   c->SaveAs("PlotPreSelection.png");
 }
