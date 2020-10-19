@@ -37,6 +37,7 @@ void PlotPreSelection(){
      SetAddressHisto(t);
      int entries=t->GetEntries();
      for(int i=0; i<entries; i++){
+       cout<<"loop bumber: "<<i<<endl;  //debug
        if(lep_id[i]==13 || lep_id[i]==-13){
          Muon_pt->Fill(lep_pt[i]);
          Muon_eta->Fill(lep_eta[i]);
