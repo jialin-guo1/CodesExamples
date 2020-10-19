@@ -6,10 +6,12 @@
 #include "TString.h"
 #include "TH1D.h"
 #include "TMath.h"
+#include <iostream>
+using namespace std;
 
 //declar some variables
-vector<int> lep_id;
-vector<float> lep_pt, lep_eta, lep_phi, lep_mass;
+std::vector<int> lep_id;
+std::vector<float> lep_pt, lep_eta, lep_phi, lep_mass;
 void SetAddressHisto(TTree* t); //function to set TTress address
 
 void PlotPreSelection(){
@@ -26,7 +28,7 @@ void PlotPreSelection(){
   TChainElement *chEl=0;
   while (( chEl=(TChainElement*)next() )) {
      TFile f(chEl->GetTitle());
-     TTree* t = (TTree*)f->Get("passedEvents");
+     TTree* t = (TTree*)f.Get("passedEvents");
      SetAddressHisto(t);
      int entries=t->GetEntries();
      for(int i=0; i<entries; i++){
