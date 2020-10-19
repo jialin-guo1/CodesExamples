@@ -15,7 +15,7 @@ void PlotPreSelection(){
 
 //chain all the files
   TChain* chain = new TChain("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/SingleMuon/crab_SingleMuon_Run2018A-17Sep2018-v2/201018_142705/0000
-")
+");
   chain.Add("*.root");
 
 // loop over the TFiles that have been added to this chain
@@ -52,5 +52,4 @@ void SetAddressHisto(TTree* t){
   TH1D *Muon_pt("Muon_pt","Muon_pt",50,15,100);
   TH1D *Muon_phi("Muon_phi","Muon_phi",50,-TMath::Pi(),TMath::Pi());
   TH1D *Muon_eta("Muon_eta","Muon_eta",50,-3,3);
-
 }
