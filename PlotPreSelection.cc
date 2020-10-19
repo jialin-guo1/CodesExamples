@@ -44,7 +44,7 @@ void PlotPreSelection(){
        }
      }
      cout<<"run number: "<<*chEl<<endl;
-     chEl ++;
+     *chEl ++;
   }
   Muon_pt->Draw();
   c->cd(2);
