@@ -53,7 +53,7 @@ void SetAddressHisto(TTree* t){
   t->SetBranchAddress("lep_phi",&lep_phi);
   t->SetBranchAddress("lep_mass",&lep_mass);
 
-  TH1D *Muon_pt("Muon_pt","Muon_pt",50,15,100);
-  TH1D *Muon_phi("Muon_phi","Muon_phi",50,-TMath::Pi(),TMath::Pi());
-  TH1D *Muon_eta("Muon_eta","Muon_eta",50,-3,3);
+  TH1D *Muon_pt = new TH1D("Muon_pt","Muon_pt",50,15,100);
+  TH1D *Muon_phi = new TH1D("Muon_phi","Muon_phi",50,-TMath::Pi(),TMath::Pi());
+  TH1D *Muon_eta = new TH1D("Muon_eta","Muon_eta",50,-3,3);
 }
