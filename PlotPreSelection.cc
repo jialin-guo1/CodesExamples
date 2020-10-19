@@ -5,7 +5,7 @@
 #include "TLorentzVector.h"
 #include "TString.h"
 #include "TH1D.h"
-Define PI = 3.14159
+#include "TMath.h"
 
 void SetAddressHisto(TTree* t); //function to set TTress address
 
@@ -50,7 +50,7 @@ void SetAddressHisto(TTree* t){
   t->SetBranchAddress("lep_mass",&lep_mass);
 
   TH1D *Muon_pt("Muon_pt","Muon_pt",50,15,100);
-  TH1D *Muon_phi("Muon_phi","Muon_phi",50,-PI,PI);
+  TH1D *Muon_phi("Muon_phi","Muon_phi",50,-TMath::Pi(),TMath::Pi());
   TH1D *Muon_eta("Muon_eta","Muon_eta",50,-3,3);
 
 }
