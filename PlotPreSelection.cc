@@ -27,7 +27,7 @@ void PlotPreSelection(){
   while (( chEl=(TChainElement*)next() )) {
      TFile f(chEl->GetTitle());
      TTree* t = (TTree*)f->Get("passedEvents");
-     SetAddress(t);
+     SetAddressHisto(t);
      int entries=t->GetEntries();
      for(int i=0; i<entries; i++){
        if(lep_id[i]==13 || lep_id[i]==-13){
