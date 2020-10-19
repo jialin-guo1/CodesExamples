@@ -28,7 +28,7 @@ void PlotPreSelection(){
   chain->Add("*.root");
 
 // loop over the TFiles that have been added to this chain
-for(int i==0;i<chain->GetEntry(); i++){
+for(int i=0;i<chain->GetEntry(); i++){
      SetAddressHisto(chain);
      if(lep_id[i]==13 || lep_id[i]==-13){
          Muon_pt->Fill(lep_pt[i]);
