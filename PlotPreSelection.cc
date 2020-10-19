@@ -28,26 +28,13 @@ void PlotPreSelection(){
   chain->Add("*.root");
 
 // loop over the TFiles that have been added to this chain
-  TObjArray *fileElements=chain->GetListOfFiles();
-  TIter next(fileElements);
-  TChainElement *chEl=0;
-  while (( chEl=(TChainElement*)next() )) {
-     TFile f(chEl->GetTitle());
-     TTree* t = (TTree*)f.Get("passedEvents");
-     SetAddressHisto(t);
-     int entries=t->GetEntries();
-     for(int i=0; i<entries; i++){
-       cout<<"loop bumber: "<<i<<endl;  //debug
-       if(lep_id[i]==13 || lep_id[i]==-13){
+for(int i==0;i<chain->GetEntry(); i++){
+     SetAddressHisto(chain);
+     if(lep_id[i]==13 || lep_id[i]==-13){
          Muon_pt->Fill(lep_pt[i]);
          Muon_eta->Fill(lep_eta[i]);
          Muon_phi->Fill(lep_phi[i]);
        }
-     }
-     cout<<"run number: "<<chEl<<endl;
-     chEl ++;
-  }
-
   Muon_pt->Draw();
   c->cd(2);
   Muon_eta->Draw();
