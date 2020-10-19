@@ -47,7 +47,7 @@ void PlotPreSelection(){
   Muon_pt->Draw();
   c->cd(2);
   Muon_eta->Draw();
-  c->cd(3)
+  c->cd(3);
   Muon_phi->Draw();
   c->SaveAs("PlotPreSelection.png");
 }
