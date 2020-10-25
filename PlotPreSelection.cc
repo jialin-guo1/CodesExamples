@@ -130,7 +130,7 @@ void PlotPreSelection(){
       H_mass->SetMarkSize(1.2);
       H_mass->SetLineColor(kBlack);
       H_mass->SetLineWidth(1);
-      H_mass->Draw("P E1");
+      H_mass->Draw("PE1");
       H_MassMC->Draw();
       H_mass->Draw("SAME P E1");
       TLegend *leg=new TLegend(0.62, 0.70, 0.82, 0.88);
