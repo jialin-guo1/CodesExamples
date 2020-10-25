@@ -132,6 +132,8 @@ void PlotPreSelection(){
       H_mass->SetLineWidth(1);
       H_mass->SetStats(kFALSE);
       H_MassMC->SetStats(kFALSE);
+      H_mass->Scale(H_mass->GetBinWith());
+      H_MassMC->Scale(H_MassMC->GetBinWith());
       H_mass->Draw("PE1");
       H_MassMC->Draw();
       H_mass->Draw("SAME P E1");
