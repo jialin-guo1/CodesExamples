@@ -99,15 +99,15 @@ void PlotPreSelection(){
       lep4_noZ.SetPtEtaPhiM((*lep_pt)[3],(*lep_eta)[3],(*lep_phi)[3],(*lep_mass)[3]);
       TLorentzVector Higgs_noZ = lep1_noZ+lep2_noZ+lep3_noZ+lep4_noZ;
       H_mass_noZinfo->Fill(Higgs_noZ.M());
-      Fourlep_mass->Fill(Higgs.M());
+      Fourlep_mass->Fill(Higgs_noZ.M());
 
       if(passedZ4lSelection!=1) continue;
       if(passedFullSelection==1&&(finalState==final4mu||finalState==final4e||finalState==final2mu2e||final2e2mu)){
       TLorentzVector lep1, lep2, lep3, lep4;
-      lep1.SetPtEtaPhiM((*lepFSR_pt)[lep_Hindex[0]],(*lepFSR_pt_eta)[lepFSR_pt_Hindex[0]],(*lep_phi)[lep_Hindex[0]],(*lep_mass)[lep_Hindex[0]]);
-      lep2.SetPtEtaPhiM((*lepFSR_pt)[lep_Hindex[1]],(*lepFSR_eta)[1],(*lepFSR_phi)[lep_Hindex[1]],(*lep_mass)[lep_Hindex[1]]);
-      lep3.SetPtEtaPhiM((*lep_pt)[lep_Hindex[2]],(*lep_eta)[2],(*lep_phi)[lep_Hindex[2]],(*lep_mass)[lep_Hindex[2]]);
-      lep4.SetPtEtaPhiM((*lep_pt)[lep_Hindex[3]],(*lep_eta)[lep_Hindex[2]],(*lep_phi)[lep_Hindex[2]],(*lep_mass)[lep_Hindex[2]]);
+      lep1.SetPtEtaPhiM((*lepFSR_pt)[lep_Hindex[0]],(*lepFSR_eta)[lep_Hindex[0]],(*lepFSR_phi)[lep_Hindex[0]],(*lep_mass)[lep_Hindex[0]]);
+      lep2.SetPtEtaPhiM((*lepFSR_pt)[lep_Hindex[1]],(*lepFSR_eta)[lep_Hindex[1]],(*lepFSR_phi)[lep_Hindex[1]],(*lep_mass)[lep_Hindex[1]]);
+      lep3.SetPtEtaPhiM((*lepFSR_pt)[lep_Hindex[2]],(*lepFSR_eta)[lep_Hindex[2]],(*lepFSR_phi)[lep_Hindex[2]],(*lep_mass)[lep_Hindex[2]]);
+      lep4.SetPtEtaPhiM((*lepFSR_pt)[lep_Hindex[3]],(*lepFSR_eta)[lep_Hindex[3]],(*lepFSR_phi)[lep_Hindex[3]],(*lep_mass)[lep_Hindex[3]]);
       TLorentzVector Higgs=lep1+lep2+lep3+lep4;
       H_mass->Fill(Higgs.M());
     }
@@ -119,7 +119,7 @@ void PlotPreSelection(){
       Electron_pt->Draw(); c->SaveAs("e_pt.png");
       Electron_eta->Draw(); c->SaveAs("e_eta.png");
       Electron_phi->Draw(); c->SaveAs("e_phi.png");
-      H_MassMC->SetFillColor(KRed); H_MassMC->Draw();
+      H_MassMC->SetFillColor("KRed"); H_MassMC->Draw();
       H_mass->GetYaxis()->SetTitle("Events / 2 GeV"); H_mass->Draw("sameE1"); c->SaveAs("H_mass.png");
       H_mass_noZinfo->Draw(); c->SaveAs("H_mass_noZinfo.png");
       Fourlep_mass->Draw(); c->SaveAs("4l_mass.png");
