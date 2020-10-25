@@ -124,7 +124,7 @@ void PlotPreSelection(){
       c1->cd();
       TLegend *leg=new TLegend(0.62, 0.70, 0.82, 0.88);
       leg->AddEntry(H_mass,"Data","PE1");
-      leg->AddEntry(H_massMC,"MC","f");
+      leg->AddEntry(H_MassMC,"MC","f");
       leg->SetFillColor(kRed);
       leg->Draw();
       H_MassMC->SetFillColor(kRed);
@@ -132,7 +132,7 @@ void PlotPreSelection(){
       H_mass->GetYaxis()->SetTitle("Events / 2 GeV");
       H_mass->SetMarkerStyle(20);
       H_mass->SetMarkerColor(kBlack);
-      H_mass->SetMarkSize(1.2);
+      H_mass->SetMarkerSize(1.2);
       H_mass->SetLineColor(kBlack);
       H_mass->SetLineWidth(1);
       H_mass->Draw("P E1");
