@@ -122,11 +122,6 @@ void PlotPreSelection(){
       Fourlep_mass->Draw(); c->SaveAs("4l_mass.png");
       TCanvas* c1 = new TCanvas();
       c1->cd();
-      TLegend *leg=new TLegend(0.62, 0.70, 0.82, 0.88);
-      leg->AddEntry(H_mass,"Data","PE1");
-      leg->AddEntry(H_massMC,"MC","f");
-      leg->SetFillColor(kRed);
-      leg->Draw();
       H_MassMC->SetFillColor(kRed);
       H_MassMC->GetYaxis()->SetTitle("Events / 2 GeV");
       H_mass->GetYaxis()->SetTitle("Events / 2 GeV");
@@ -140,6 +135,11 @@ void PlotPreSelection(){
       hs.Add(H_MassMC);
       hs.Add(H_mass);
       hs.Draw("SAME");
+      TLegend *leg=new TLegend(0.62, 0.70, 0.82, 0.88);
+      leg->AddEntry(H_mass,"Data","PE1");
+      leg->AddEntry(H_massMC,"MC","f");
+      leg->SetFillColor(kRed);
+      leg->Draw("SAME");
       H_mass->Draw("SAME P E1");
       c1->SaveAs("H_mass.png");
 }
