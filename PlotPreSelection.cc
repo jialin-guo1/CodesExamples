@@ -131,16 +131,13 @@ void PlotPreSelection(){
       H_mass->SetLineColor(kBlack);
       H_mass->SetLineWidth(1);
       H_mass->Draw("P E1");
-      THStack hs("hs","Hmass");
-      hs.Add(H_MassMC);
-      hs.Add(H_mass);
-      hs.Draw("SAME");
+      H_MassMC->Draw();
+      H_mass->Draw("SAME P E1");
       TLegend *leg=new TLegend(0.62, 0.70, 0.82, 0.88);
       leg->AddEntry(H_mass,"Data","PE1");
       leg->AddEntry(H_massMC,"MC","f");
       leg->SetFillColor(kRed);
       leg->Draw("SAME");
-      H_mass->Draw("SAME P E1");
       c1->SaveAs("H_mass.png");
 }
 
