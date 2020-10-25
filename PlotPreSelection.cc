@@ -125,17 +125,16 @@ void PlotPreSelection(){
       Fourlep_mass->Draw(); c->SaveAs("4l_mass.png");
       TCanvas* c1 = new TCanvas();
       c1->cd();
-      THStack hs("hs","Hmass");
-      hs.Add(H_MassMC);
-      hs.Add(H_mass);
-      hs.Draw();
-      H_MassMC->Draw();
       H_MassMC->SetFillColor(kRed);
       H_MassMC->GetYaxis()->SetTitle("Events / 2 GeV");
       H_mass->GetYaxis()->SetTitle("Events / 2 GeV");
-      H_MassMC->Draw();
-      H_mass->Draw("same E1");
-      c1->SaveAs("H_mass.png");     
+      H->mass->Draw("E1");
+      THStack hs("hs","Hmass");
+      hs.Add(H_MassMC);
+      hs.Add(H_mass);
+      hs.Draw("SAME");
+      H_mass->Draw("SAME E1");
+      c1->SaveAs("H_mass.png");
 }
 
 
