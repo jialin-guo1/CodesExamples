@@ -128,7 +128,7 @@ void PlotPreSelection(){
       H_MassMC->SetFillColor(kRed);
       H_MassMC->GetYaxis()->SetTitle("Events / 2 GeV");
       H_mass->GetYaxis()->SetTitle("Events / 2 GeV");
-      H->mass->Draw("E1");
+      H_mass->Draw("E1");
       THStack hs("hs","Hmass");
       hs.Add(H_MassMC);
       hs.Add(H_mass);
