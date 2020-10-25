@@ -6,6 +6,7 @@
 #include "TString.h"
 #include "TH1D.h"
 #include "TMath.h"
+#include "TAxis.h"
 #include <iostream>
 using namespace std;
 
@@ -60,7 +61,6 @@ void PlotPreSelection(){
   SetAddressHisto(chainMC);
   for(int i=0;i<chainMC->GetEntries(); i++){
     chainMC->GetEntry(i);
-    if(passedZ4lSelection!=1) continue;
     if(passedFullSelection==1&&(finalState==final4mu||finalState==final4e||finalState==final2mu2e||final2e2mu)){
       for(int j=0; j<H_pt->size(); j++){
         TLorentzVector H_massMC;
@@ -101,7 +101,6 @@ void PlotPreSelection(){
       H_mass_noZinfo->Fill(Higgs_noZ.M());
       Fourlep_mass->Fill(Higgs_noZ.M());
 
-      if(passedZ4lSelection!=1) continue;
       if(passedFullSelection==1&&(finalState==final4mu||finalState==final4e||finalState==final2mu2e||final2e2mu)){
       TLorentzVector lep1, lep2, lep3, lep4;
       lep1.SetPtEtaPhiM((*lepFSR_pt)[lep_Hindex[0]],(*lepFSR_eta)[lep_Hindex[0]],(*lepFSR_phi)[lep_Hindex[0]],(*lep_mass)[lep_Hindex[0]]);
@@ -119,10 +118,24 @@ void PlotPreSelection(){
       Electron_pt->Draw(); c->SaveAs("e_pt.png");
       Electron_eta->Draw(); c->SaveAs("e_eta.png");
       Electron_phi->Draw(); c->SaveAs("e_phi.png");
-      H_MassMC->SetFillColor("KRed"); H_MassMC->Draw();
-      H_mass->GetYaxis()->SetTitle("Events / 2 GeV"); H_mass->Draw("sameE1"); c->SaveAs("H_mass.png");
+     // H_MassMC->SetFillColor(10); H_MassMC->Draw();
+     // H_mass->GetYaxis()->SetTitle("Events / 2 GeV");
+     // H_mass->Draw("sameE1"); c->SaveAs("H_mass.png");
       H_mass_noZinfo->Draw(); c->SaveAs("H_mass_noZinfo.png");
       Fourlep_mass->Draw(); c->SaveAs("4l_mass.png");
+      TCanvas* c1 = new TCanvas();
+      c1->cd();
+      THStack hs("hs","Hmass");
+      hs.Add(H_MassMC);
+      hs.Add(H_mass);
+      hs.Draw();
+      H_MassMC->Draw();
+      H_MassMC->SetFillColor(kRed);
+      H_MassMC->GetYaxis()->SetTitle("Events / 2 GeV");
+      H_mass->GetYaxis()->SetTitle("Events / 2 GeV");
+      H_MassMC->Draw();
+      H_mass->Draw("same E1");
+      c1->SaveAs("H_mass.png");     
 }
 
 
@@ -140,8 +153,9 @@ void SetAddressHisto(TTree* t){
   t->SetBranchAddress("finalState",&finalState);
   t->SetBranchAddress("lepFSR_pt",&lepFSR_pt);
   t->SetBranchAddress("lepFSR_eta",&lepFSR_eta);
+  t->SetBranchAddress("lepFSR_phi",&lepFSR_phi);
   t->SetBranchAddress("H_pt",&H_pt);
   t->SetBranchAddress("H_eta",&H_eta);
   t->SetBranchAddress("H_phi",&H_phi);
-  t->SetBranchAddress("H_Mass",&H_mass);
+  t->SetBranchAddress("H_mass",&H_Mass);
 }
