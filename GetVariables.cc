@@ -6,7 +6,7 @@
 using namespace std;
 
 void GetVariables(){
-  bool passedTring;
+  bool passedTrig;
   bool passedZ1LSelection;
   bool passedZ4lSelection;
   bool passedFullSelection;
@@ -74,7 +74,7 @@ void GetVariables(){
   chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/EGamma/crab_EGamma_Run2018A-17Sep2018-v2/201018_142452/0003/*.root");
   chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/MuonEG/crab_MuonEG_Run2018A-17Sep2018-v1/201018_142240/0000/*.root");
 
-  long64_t nentries = chain->GetEntries();
+  Long64_t nentries = chain->GetEntries();
   lep_id = 0;
   lep_pt = 0;
   lep_eta = 0;
@@ -125,7 +125,7 @@ void GetVariables(){
   chain->SetBranchAddress("H_phi",&H_phi);
   chain->SetBranchAddress("H_mass",&H_mass);
 
-  for(long64_t i == 0; i<nentries; i++){
+  for(Long64_t i = 0; i<nentries; i++){
     chain->GetEntry(i);
     if (!passedTrig)    continue;
     newtree->Fill();
