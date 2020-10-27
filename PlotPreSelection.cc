@@ -44,7 +44,7 @@ void PlotPreSelection(){
   TCanvas* c = new TCanvas();
 //chain all the files for signal
   TChain* chain = new TChain("Ana/passedEvents");
-  chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/SingleMuon/crab_SingleMuon_Run2018A-17Sep2018-v2/201018_142705/0000/*.root");
+  chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/SingleMuon/crab_SingleMuon_Run2018A-17Sep2018-v2/201018_142705/0000/SingleMuon_Run2018A-17Sep2018-v2_19*.root");
   chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/SingleMuon/crab_SingleMuon_Run2018A-17Sep2018-v2/201018_142705/0001/*.root");
   chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/SingleMuon/crab_SingleMuon_Run2018A-17Sep2018-v2/201018_142705/0002/*.root");
   chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/DoubleMuon/crab_DoubleMuon_Run2018A-17Sep2018-v2/201018_142029/0000/*.root");
@@ -122,7 +122,6 @@ void PlotPreSelection(){
       Fourlep_mass->Draw(); c->SaveAs("4l_mass.png");
       TCanvas* c1 = new TCanvas();
       c1->cd();
-      //H_MassMC->SetFillColor(kRed);
       H_MassMC->GetYaxis()->SetTitle("Events / 2 GeV");
       H_mass->GetYaxis()->SetTitle("Events / 2 GeV");
       H_mass->SetMarkerStyle(20);
@@ -132,11 +131,11 @@ void PlotPreSelection(){
       H_mass->SetLineWidth(1);
       H_mass->SetStats(kFALSE);
       H_MassMC->SetStats(kFALSE);
-      H_mass->Scale(1/H_mass->GetBinWidth(0));
-      H_MassMC->Scale(1/H_MassMC->GetBinWidth(0));
+      H_mass->Scale(H_mass->GetBinWith());
+      H_MassMC->Scale(H_MassMC->GetBinWith());
       H_MassMC->SetFillColor(kRed);
       H_mass->Draw("PE1");
-      H_MassMC->Draw("hist");
+      H_MassMC->Draw("histo");
       H_mass->Draw("SAME P E1");
       TLegend *leg=new TLegend(0.7, 0.7, 0.85, 0.85);
       leg->AddEntry(H_mass,"Data","PE1");
