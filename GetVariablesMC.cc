@@ -35,7 +35,7 @@ void GetVariablesMC(){
   std::vector<float> *H_mass;
 
   TString outputFile = "Fourlep_2018_MC.root";
-  TFile ofile (outputFile,"recreate");
+  TFile ofile(outputFile,"recreate");
   TTree* newtree = new TTree("newtree","newtree");
   newtree->Branch("passedZ1LSelection", &passedZ1LSelection);
   newtree->Branch("passedFullSelection", &passedFullSelection);
@@ -78,27 +78,27 @@ void GetVariablesMC(){
 
 
   Long64_t nentries = chain->GetEntries();
-  lep_id = 0;
-  lep_pt = 0;
-  lep_eta = 0;
-  lep_phi = 0;
-  lep_mass = 0;
-  lepFSR_pt = 0;
-  lepFSR_eta = 0;
-  lepFSR_phi = 0;
-  lepFSR_mass = 0;
-  Z_pt = 0;
-  Z_eta = 0;
-  Z_phi = 0;
-  Z_mass = 0;
-  Z_noFSR_pt = 0;
-  Z_noFSR_eta = 0;
-  Z_noFSR_phi = 0;
-  Z_noFSR_mass = 0;
-  H_pt = 0;
-  H_eta = 0;
-  H_phi = 0;
-  H_mass = 0;
+  //lep_id = 0;
+  //lep_pt = 0;
+  //lep_eta = 0;
+  //lep_phi = 0;
+  //lep_mass = 0;
+  //lepFSR_pt = 0;
+  //lepFSR_eta = 0;
+  //lepFSR_phi = 0;
+  //lepFSR_mass = 0;
+  //Z_pt = 0;
+  //Z_eta = 0;
+  //Z_phi = 0;
+  //Z_mass = 0;
+  //Z_noFSR_pt = 0;
+  //Z_noFSR_eta = 0;
+  //Z_noFSR_phi = 0;
+  //Z_noFSR_mass = 0;
+  //H_pt = 0;
+  //H_eta = 0;
+  //H_phi = 0;
+  //H_mass = 0;
 
   chain->SetBranchAddress("passedZ1LSelection",&passedZ1LSelection);
   chain->SetBranchAddress("passedZ4lSelection",&passedZ4lSelection);
