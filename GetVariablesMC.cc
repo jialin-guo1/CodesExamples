@@ -34,7 +34,7 @@ void GetVariablesMC(){
   std::vector<float> *H_phi;
   std::vector<float> *H_mass;
 
-  TString outputFile = "Fourlep_2018_MC.root";
+  TString outputFile = "Fourlep_2018_MC01.root";
   TFile ofile(outputFile,"recreate");
   TTree* newtree = new TTree("newtree","newtree");
   newtree->Branch("passedZ1LSelection", &passedZ1LSelection);
@@ -69,7 +69,7 @@ void GetVariablesMC(){
   chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/chenguan/GluGluHToZZTo4L_M120_13TeV_powheg2_JHUGenV7011_pythia8/crab_2018GGH_120/200510_154410/0000/*.root");
   chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/chenguan/GluGluHToZZTo4L_M124_13TeV_powheg2_JHUGenV7011_pythia8/crab_2017GGH_124/200508_214945/0000/*.root");
   chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/chenguan/GluGluHToZZTo4L_M124_13TeV_powheg2_JHUGenV7011_pythia8/crab_2018GGH_124/200510_154624/0000/*.root");
-  chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/chenguan/GluGluHToZZTo4L_M125_13TeV_powheg2_JHUGenV7011_pythia8/crab_2017GGH_125/200508_214449/0000*.root");
+  chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/chenguan/GluGluHToZZTo4L_M125_13TeV_powheg2_JHUGenV7011_pythia8/crab_2017GGH_125/200508_214449/0000/*.root");
   chain->Add("pnfs/ihep.ac.cn/data/cms/store/user/chenguan/GluGluHToZZTo4L_M125_13TeV_powheg2_JHUGenV7011_pythia8/crab_2017GGH_125_vtx/200602_090414/0000/*.root");
   chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/chenguan/GluGluHToZZTo4L_M125_13TeV_powheg2_JHUGenV7011_pythia8/crab_2017GGH_125_vtx_200825/200826_171240/0000/*.root");
   chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/chenguan/GluGluHToZZTo4L_M125_13TeV_powheg2_JHUGenV7011_pythia8/crab_2017GGH_125_vtx_200927/200928_183920/0000/*.root");
