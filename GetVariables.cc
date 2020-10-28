@@ -65,14 +65,14 @@ void GetVariables(){
 
   TChain* chain = new TChain("Ana/passedEvents");
   chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/SingleMuon/crab_SingleMuon_Run2018A-17Sep2018-v2/201018_142705/0000/*.root");
-  chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/SingleMuon/crab_SingleMuon_Run2018A-17Sep2018-v2/201018_142705/0001/*.root");
-  chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/SingleMuon/crab_SingleMuon_Run2018A-17Sep2018-v2/201018_142705/0002/*.root");
-  chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/DoubleMuon/crab_DoubleMuon_Run2018A-17Sep2018-v2/201018_142029/0000/*.root");
-  chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/EGamma/crab_EGamma_Run2018A-17Sep2018-v2/201018_142452/0000/*.root");
-  chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/EGamma/crab_EGamma_Run2018A-17Sep2018-v2/201018_142452/0001/*.root");
-  chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/EGamma/crab_EGamma_Run2018A-17Sep2018-v2/201018_142452/0002/*.root");
-  chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/EGamma/crab_EGamma_Run2018A-17Sep2018-v2/201018_142452/0003/*.root");
-  chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/MuonEG/crab_MuonEG_Run2018A-17Sep2018-v1/201018_142240/0000/*.root");
+  //chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/SingleMuon/crab_SingleMuon_Run2018A-17Sep2018-v2/201018_142705/0001/*.root");
+  //chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/SingleMuon/crab_SingleMuon_Run2018A-17Sep2018-v2/201018_142705/0002/*.root");
+  //chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/DoubleMuon/crab_DoubleMuon_Run2018A-17Sep2018-v2/201018_142029/0000/*.root");
+  //chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/EGamma/crab_EGamma_Run2018A-17Sep2018-v2/201018_142452/0000/*.root");
+  //chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/EGamma/crab_EGamma_Run2018A-17Sep2018-v2/201018_142452/0001/*.root");
+  //chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/EGamma/crab_EGamma_Run2018A-17Sep2018-v2/201018_142452/0002/*.root");
+  //chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/EGamma/crab_EGamma_Run2018A-17Sep2018-v2/201018_142452/0003/*.root");
+  //chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/guoj/2018data/UFHZZAnalysisRun2/myTask_Data/MuonEG/crab_MuonEG_Run2018A-17Sep2018-v1/201018_142240/0000/*.root");
 
   Long64_t nentries = chain->GetEntries();
   lep_id = 0;
