@@ -76,8 +76,11 @@ void GetVariablesMC(){
   chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/chenguan/GluGluHToZZTo4L_M125_13TeV_powheg2_JHUGenV7011_pythia8/crab_2018GGH_125/200510_154152/0000/*.root");
   chain->Add("/pnfs/ihep.ac.cn/data/cms/store/user/chenguan/GluGluHToZZTo4L_M125_13TeV_powheg2_JHUGenV7011_pythia8/crab_2018GGH_125_vtx/200603_231054/0000/*.root");
 
+  if(!chain){cout<<"Error about the file"<<endl;}
+
 
   Long64_t nentries = chain->GetEntries();
+  cout<<"nubmer of the entries"<<nentries<<endl;
   //lep_id = 0;
   //lep_pt = 0;
   //lep_eta = 0;
