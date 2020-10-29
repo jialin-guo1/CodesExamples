@@ -11,6 +11,7 @@ parser.add_argument("-i", "--inputfiles", dest="inputfiles",type=argparse.FileTy
 parser.add_argument("-o", "--outputfile", dest="outputfile", default="plots.root", help="Output file containing plots")
 args = parser.parse_args()
 
+print("get file " + str(args.inputfiles))
 #input Ntuple
 chain = ROOT.TChain(args.ttree)
 for filename in args.inputfiles:
@@ -78,7 +79,7 @@ passedEvents.Branch("passedZ4lSelection",passedZ4lSelection,"passedZ4lSelection/
 passedEvents.Branch("passedFullSelection",passedFullSelection,"passedFullSelection/O")
 
 #Loop over all the events in the input ntuple
-for ievent,event in enumerate(tchain):#, start=650000):
+for ievent,event in enumerate(chain):#, start=650000):
     #if ievent > args.maxevents and args.maxevents != -1: break
     #if ievent == 5000000: break
     #if ievent % 10000 == 0: print 'Processing entry ' + str(ievent)
