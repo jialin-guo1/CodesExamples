@@ -2,16 +2,17 @@
 import ROOT
 import os
 import numpy as np
+from array import array
 
 import argparse
-parser = argparse.ArgumentPaser(description = "A simple ttree plotter")
+parser = argparse.ArgumentParser(description = "A simple ttree plotter")
 parser.add_argument("-t", "--ttree", dest="ttree", default="Ana/passedEvents", help="TTree Name")
-parser.add_argument("-i", "--inputfiles", dest="inputfiles", default="Sync_1031_2018_ttH_v2.root", type='string', help="List of input root files")
+parser.add_argument("-i", "--inputfiles", dest="inputfiles",type=argparse.FileType('r'), default="Sync_1031_2018_ttH_v2.root", help="List of input root files")
 parser.add_argument("-o", "--outputfile", dest="outputfile", default="plots.root", help="Output file containing plots")
 args = parser.parse_args()
 
 #input Ntuple
-chain = ROOT.Tchain(args.ttree)
+chain = ROOT.TChain(args.ttree)
 for filename in args.inputfiles:
     chain.Add(filename)
 print 'Total number of events: ' + str(chain.GetEntries())
