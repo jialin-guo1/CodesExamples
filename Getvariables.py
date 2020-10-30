@@ -15,28 +15,16 @@ args = parser.parse_args()
 print("get file " + str(args.inputfiles))
 #input Ntuple
 chain = ROOT.TChain(args.ttree)
-
-#dataset = []
-#datasetfile = {}
-#with open(args.inputfiles,"rw") as detasetfile:
-#    for line in datasetfile:
-#        if(line.startswitch('#')): continue
-#        if( not (agrs.substring=="")):
-#            if( not (agrs.substring in line)): continue
-#        dataset = line.split()[0]
-#        dataset = dataset.rstrip()
-#        dataset = dataset.lstrip()
 f = open(args.inputfiles)
-#while True:
 for line in f:
     dataset = line.strip('\n')
     print("dataset after strip " + str(dataset))
     chain.Add(dataset)
-
 print 'Total number of events: ' + str(chain.GetEntries())
 
 #variables
 lep_Hindex = array('l'[0])
+'''
 lep_id = array('l',[0])
 lep_pt = array('f',[0.])
 lep_phi = array('f',[0.])
@@ -62,13 +50,14 @@ passedFullSelection = True
 passedTrig = True
 passedZ1LSelection = True
 passedZ4lSelection = True
-
+'''
 
 #Output file and any Branch we want
 file_out = ROOT.TFile(args.outputfile, 'recreate')
 passedEvents = ROOT.TTree("passedEvents","passedEvents")
 
 passedEvents.Branch("lep_Hindex",lep_Hindex,"lep_Hindex/L")
+'''
 passedEvents.Branch("lep_id",lep_id,"lep_id/L")
 passedEvents.Branch("lep_pt",lep_pt,"lep_pt/F")
 passedEvents.Branch("lep_eta",lep_eta,"lep_eta/F")
@@ -94,12 +83,14 @@ passedEvents.Branch("passedTrig",passedTrig,"passedTrig/O")
 passedEvents.Branch("passedZ1LSelection",passedZ1LSelection,"passedZ1LSelection/O")
 passedEvents.Branch("passedZ4lSelection",passedZ4lSelection,"passedZ4lSelection/O")
 passedEvents.Branch("passedFullSelection",passedFullSelection,"passedFullSelection/O")
+'''
 
 #Loop over all the events in the input ntuple
-for ievent,event in enumerate(chain):#, start=650000):
-    #if ievent > args.maxevents and args.maxevents != -1: break
-    #if ievent == 5000000: break
-    #if ievent % 10000 == 0: print 'Processing entry ' + str(ievent)
+for ievent,event in enumerate(chain):
+    Nlep = event.lep_pt.size()
+    for i in Nlep
+    #fill tree
+    lep_Hindex[i] = event.lep_Hindex[i]
     passedEvents.Fill()
 
 file_out.Write()
