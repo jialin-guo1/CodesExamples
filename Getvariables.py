@@ -23,8 +23,9 @@ for line in f:
 print 'Total number of events: ' + str(chain.GetEntries())
 
 #variables
-lep_Hindex = array('l'[0])
+lep1_pt = array('f',[0.])
 '''
+lep_Hindex = array('l'[0])
 lep_id = array('l',[0])
 lep_pt = array('f',[0.])
 lep_phi = array('f',[0.])
@@ -55,9 +56,9 @@ passedZ4lSelection = True
 #Output file and any Branch we want
 file_out = ROOT.TFile(args.outputfile, 'recreate')
 passedEvents = ROOT.TTree("passedEvents","passedEvents")
-
-passedEvents.Branch("lep_Hindex",lep_Hindex,"lep_Hindex/L")
+passedEvents.Branch("lep_pt1",lep1_pt,"lep1_pt/F")
 '''
+passedEvents.Branch("lep_Hindex",lep_Hindex,"lep_Hindex/L")
 passedEvents.Branch("lep_id",lep_id,"lep_id/L")
 passedEvents.Branch("lep_pt",lep_pt,"lep_pt/F")
 passedEvents.Branch("lep_eta",lep_eta,"lep_eta/F")
@@ -88,10 +89,11 @@ passedEvents.Branch("passedFullSelection",passedFullSelection,"passedFullSelecti
 #Loop over all the events in the input ntuple
 for ievent,event in enumerate(chain):
     Nlep = event.lep_pt.size()
-    for i in Nlep
+    for i in range(Nlep):
     #fill tree
-    lep_Hindex[i] = event.lep_Hindex[i]
-    passedEvents.Fill()
+       lep1_pt[0] = event.lep_pt[event.lep_Hindex[0]]
+#      lep_Hindex[i] = event.lep_Hindex[i]
+       passedEvents.Fill()
 
 file_out.Write()
 file_out.Close()
