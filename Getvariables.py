@@ -20,15 +20,15 @@ dataset = []
 datasetfile = {}
 with open(args.inputfiles, "r") as detasetfile:
     for line in datasetfile:
-        if(line.startswitch('#')): continue
-        if( not (agrs.substring=="")):
-            if( not (agrs.substring in line)): continue
-        dataset = line.split()[0]
-        dataset = dataset.rstrip()
-        dataset = dataset.lstrip()
-        dataset.append(dataset)
-        chain.Add(dataset)
-        
+#        if(line.startswitch('#')): continue
+#        if( not (agrs.substring=="")):
+#            if( not (agrs.substring in line)): continue
+#        dataset = line.split()[0]
+#        dataset = dataset.rstrip()
+#        dataset = dataset.lstrip()
+#        dataset.append(dataset)
+        chain.Add(line)
+
 print 'Total number of events: ' + str(chain.GetEntries())
 
 #variables
