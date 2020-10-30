@@ -7,27 +7,31 @@ from array import array
 import argparse
 parser = argparse.ArgumentParser(description = "A simple ttree plotter")
 parser.add_argument("-t", "--ttree", dest="ttree", default="Ana/passedEvents", help="TTree Name")
-parser.add_argument("-i", "--inputfiles", dest="inputfiles",type=argparse.FileType('r'), default="Sync_1031_2018_ttH_v2.root", help="List of input root files")
+parser.add_argument("-i", "--inputfiles", dest="inputfiles", default="Sync_1031_2018_ttH_v2.root", help="List of input root files")
 parser.add_argument("-o", "--outputfile", dest="outputfile", default="plots.root", help="Output file containing plots")
-parser.add_argument("s","--substring", dest="substring",default="",help='only submit datasets with this string in the name')
+parser.add_argument("-s","--substring", dest="substring",default="",help='only submit datasets with this string in the name')
 args = parser.parse_args()
 
 print("get file " + str(args.inputfiles))
 #input Ntuple
 chain = ROOT.TChain(args.ttree)
 
-dataset = []
-datasetfile = {}
-with open(args.inputfiles, "r") as detasetfile:
-    for line in datasetfile:
+#dataset = []
+#datasetfile = {}
+#with open(args.inputfiles,"rw") as detasetfile:
+#    for line in datasetfile:
 #        if(line.startswitch('#')): continue
 #        if( not (agrs.substring=="")):
 #            if( not (agrs.substring in line)): continue
 #        dataset = line.split()[0]
 #        dataset = dataset.rstrip()
 #        dataset = dataset.lstrip()
-#        dataset.append(dataset)
-        chain.Add(line)
+f = open(args.inputfiles)
+#while True:
+for line in f:
+    dataset = line.strip('\n')
+    print("dataset after strip " + str(dataset))
+    chain.Add(dataset)
 
 print 'Total number of events: ' + str(chain.GetEntries())
 
