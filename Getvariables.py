@@ -18,7 +18,7 @@ chain = ROOT.TChain(args.ttree)
 f = open(args.inputfiles)
 for line in f:
     dataset = line.strip('\n')
-    print("dataset after strip " + str(dataset))
+    print("found dataset " + str(dataset))
     chain.Add(dataset)
 print 'Total number of events: ' + str(chain.GetEntries())
 
@@ -149,7 +149,7 @@ for ievent,event in enumerate(chain):
        lep4FSR_eta[0] = event.lepFSR_eta[event.lep_Hindex[3]]
        lep4FSR_phi[0] = event.lepFSR_phi[event.lep_Hindex[3]]
        lep4FSR_mass[0] = event.lepFSR_mass[event.lep_Hindex[3]]
-       
+
     Hhiggs = event.H_pt.size()
     for i in range(Hhiggs):
         h_pt[0] = event.H_pt[i]
