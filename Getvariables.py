@@ -98,12 +98,12 @@ passedEvents.Branch("lep4FSR_mass",lep4FSR_mass,"lep4FSR_mass/F")
 passedEvents.Branch("h_pt",h_pt,"h_pt/F")
 passedEvents.Branch("h_eta",h_eta,"h_eta/F")
 passedEvents.Branch("h_phi",h_phi,"h_phi/F")
-passedEvents.Branch("h_mass",H_mass,"h_mass/F")
+passedEvents.Branch("h_mass",h_mass,"h_mass/F")
 
 #Loop over all the events in the input ntuple
 for ievent,event in enumerate(chain):
-    if(not passedTrig): continue
-    if(not passedFullSelection): continue
+    if(not event.passedTrig): continue
+    if(not event.passedFullSelection): continue
     Nlep = event.lep_pt.size()
     for i in range(Nlep):
 
@@ -113,6 +113,7 @@ for ievent,event in enumerate(chain):
        lep1_eta[0] = event.lep_eta[event.lep_Hindex[0]]
        lep1_phi[0] = event.lep_phi[event.lep_Hindex[0]]
        lep1_mass[0] = event.lep_mass[event.lep_Hindex[0]]
+
 
        lep2_pt[0] = event.lep_pt[event.lep_Hindex[1]]
        lep2_eta[0] = event.lep_eta[event.lep_Hindex[1]]
@@ -148,13 +149,13 @@ for ievent,event in enumerate(chain):
        lep4FSR_eta[0] = event.lepFSR_eta[event.lep_Hindex[3]]
        lep4FSR_phi[0] = event.lepFSR_phi[event.lep_Hindex[3]]
        lep4FSR_mass[0] = event.lepFSR_mass[event.lep_Hindex[3]]
-
-    Nhiggs = event.H_pt.size()
-    for i in Hhiggs:
-        h_pt[0] = H_pt[i]
-        h_eta[0] = H_eta[i]
-        h_phi[0] = H_phi[i]
-        H_mass[0] = H_mass[i]
+       
+    Hhiggs = event.H_pt.size()
+    for i in range(Hhiggs):
+        h_pt[0] = event.H_pt[i]
+        h_eta[0] =event.H_eta[i]
+        h_phi[0] = event.H_phi[i]
+        h_mass[0] = event.H_mass[i]
 #      lep_Hindex[i] = event.lep_Hindex[i]
     passedEvents.Fill()
 
