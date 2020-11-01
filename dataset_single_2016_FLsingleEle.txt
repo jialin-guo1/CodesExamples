@@ -1,0 +1,13 @@
+root://cms-xrd-global.cern.ch//store/user/ferrico/2018data/UFHZZAnalysisRun2/myTask_Data/SingleElectron/crab_SingleElectron_Run2016B-17Jul2018_ver2-v1/190923_132016/0000/*.root
+root://cms-xrd-global.cern.ch//store/user/ferrico/2018data/UFHZZAnalysisRun2/myTask_Data/SingleElectron/crab_SingleElectron_Run2016B-17Jul2018_ver2-v1/190923_132016/0001/*.root
+root://cms-xrd-global.cern.ch//store/user/ferrico/2018data/UFHZZAnalysisRun2/myTask_Data/SingleElectron/crab_SingleElectron_Run2016B-17Jul2018_ver2-v1/190923_132016/0002/*.root
+root://cms-xrd-global.cern.ch//store/user/ferrico/2018data/UFHZZAnalysisRun2/myTask_Data/SingleElectron/crab_SingleElectron_Run2016C-17Jul2018-v1/190923_132221/0000/*.root
+root://cms-xrd-global.cern.ch//store/user/ferrico/2018data/UFHZZAnalysisRun2/myTask_Data/SingleElectron/crab_SingleElectron_Run2016D-17Jul2018-v1/190923_132430/0000/*.root
+root://cms-xrd-global.cern.ch//store/user/ferrico/2018data/UFHZZAnalysisRun2/myTask_Data/SingleElectron/crab_SingleElectron_Run2016D-17Jul2018-v1/190923_132430/0001/*.root
+root://cms-xrd-global.cern.ch//store/user/ferrico/2018data/UFHZZAnalysisRun2/myTask_Data/SingleElectron/crab_SingleElectron_Run2016E-17Jul2018-v1/190923_132635/0000/*.root
+root://cms-xrd-global.cern.ch//store/user/ferrico/2018data/UFHZZAnalysisRun2/myTask_Data/SingleElectron/crab_SingleElectron_Run2016E-17Jul2018-v1/190923_132635/0001/*.root
+root://cms-xrd-global.cern.ch//store/user/ferrico/2018data/UFHZZAnalysisRun2/myTask_Data/SingleElectron/crab_SingleElectron_Run2016F-17Jul2018-v1/190923_132848/0000/*.root
+root://cms-xrd-global.cern.ch//store/user/ferrico/2018data/UFHZZAnalysisRun2/myTask_Data/SingleElectron/crab_SingleElectron_Run2016G-17Jul2018-v1/190923_133100/0000/*.root
+root://cms-xrd-global.cern.ch//store/user/ferrico/2018data/UFHZZAnalysisRun2/myTask_Data/SingleElectron/crab_SingleElectron_Run2016G-17Jul2018-v1/190923_133100/0001/*.root
+root://cms-xrd-global.cern.ch//store/user/ferrico/2018data/UFHZZAnalysisRun2/myTask_Data/SingleElectron/crab_SingleElectron_Run2016H-17Jul2018-v1/190923_133312/0000/*.root
+root://cms-xrd-global.cern.ch//store/user/ferrico/2018data/UFHZZAnalysisRun2/myTask_Data/SingleElectron/crab_SingleElectron_Run2016H-17Jul2018-v1/190923_133312/0001/*.root
