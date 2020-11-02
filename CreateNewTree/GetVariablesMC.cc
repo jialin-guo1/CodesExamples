@@ -133,6 +133,10 @@ void GetVariablesMC(){
 
   for(Long64_t i = 0; i<nentries; i++){
     chain->GetEntry(i);
+    Long64_t Nlep = lep_pt->size();
+    for(Long64_t j=0; j<Nlep){
+      lep_pt
+    }
     if (!passedTrig)    continue;
     newtree->Fill();
   }
