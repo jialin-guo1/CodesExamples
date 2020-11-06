@@ -1,0 +1,14 @@
+root://cms-xrd-global.cern.ch//store/user/t2/users/ferrico/Qianying/2016/DATA/DoubleEG_2016B_ver2.root
+root://cms-xrd-global.cern.ch//store/user/t2/users/ferrico/Qianying/2016/DATA/DoubleEG_2016C.root
+root://cms-xrd-global.cern.ch//store/user/t2/users/ferrico/Qianying/2016/DATA/DoubleEG_2016D.root
+root://cms-xrd-global.cern.ch//store/user/t2/users/ferrico/Qianying/2016/DATA/DoubleEG_2016E.root
+root://cms-xrd-global.cern.ch//store/user/t2/users/ferrico/Qianying/2016/DATA/DoubleEG_2016F.root
+root://cms-xrd-global.cern.ch//store/user/t2/users/ferrico/Qianying/2016/DATA/DoubleEG_2016G.root
+root://cms-xrd-global.cern.ch//store/user/t2/users/ferrico/Qianying/2016/DATA/DoubleEG_2016H.root
+root://cms-xrd-global.cern.ch//store/user/t2/users/ferrico/Qianying/2016/DATA/DoubleMuon_2016B_ver2.root
+root://cms-xrd-global.cern.ch//store/user/t2/users/ferrico/Qianying/2016/DATA/DoubleMuon_2016C.root
+root://cms-xrd-global.cern.ch//store/user/t2/users/ferrico/Qianying/2016/DATA/DoubleMuon_2016D.root
+root://cms-xrd-global.cern.ch//store/user/t2/users/ferrico/Qianying/2016/DATA/DoubleMuon_2016E.root
+root://cms-xrd-global.cern.ch//store/user/t2/users/ferrico/Qianying/2016/DATA/DoubleMuon_2016F.root
+root://cms-xrd-global.cern.ch//store/user/t2/users/ferrico/Qianying/2016/DATA/DoubleMuon_2016G.root
+root://cms-xrd-global.cern.ch//store/user/t2/users/ferrico/Qianying/2016/DATA/DoubleMuon_2016H.root

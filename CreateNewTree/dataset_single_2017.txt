@@ -1,9 +1,0 @@
-root://cms-xrd-global.cern.ch//store/user/chenguan/EGamma/crab_EGamma_Run2018A_2lskim_vtx/200704_112947/0000/*.root
-root://cms-xrd-global.cern.ch//store/user/chenguan/EGamma/crab_EGamma_Run2018A_2lskim_vtx/200704_112947/0001/*.root
-root://cms-xrd-global.cern.ch//store/user/chenguan/EGamma/crab_EGamma_Run2018A_2lskim_vtx/200704_112947/0001/*.root
-root://cms-xrd-global.cern.ch//store/user/chenguan/EGamma/crab_EGamma_Run2018A_2lskim_vtx/200704_112947/0002/*.root
-root://cms-xrd-global.cern.ch//store/user/chenguan/EGamma/crab_EGamma_Run2018B_2lskim_vtx/200704_113233/0000/*.root
-root://cms-xrd-global.cern.ch//store/user/chenguan/EGamma/crab_EGamma_Run2018B_2lskim_vtx/200704_113233/0001/*.root
-root://cms-xrd-global.cern.ch//
-root://cms-xrd-global.cern.ch//
-root://cms-xrd-global.cern.ch//
