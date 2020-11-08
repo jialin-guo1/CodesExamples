@@ -21,13 +21,13 @@ t = Signal.Get('passedEvents')
 # book histogram and canvas
 c = ROOT.TCanvas()
 
-gg = ROOT.TH1D("gg->zz","gg->zz",50,70,170)
+gg = ROOT.TH1D("gg->zz","Backgrund(2016)",50,70,170)
 gg.SetFillColor(ROOT.kBlue)
 
-qq = ROOT.TH1D("qq->zz","qq->zz",50,70,170)
+qq = ROOT.TH1D("qq->zz","Backgrund(2016)",50,70,170)
 qq.SetFillColor(7)
 
-Sim = ROOT.TH1D("sim","sim",50,70,170)
+Sim = ROOT.TH1D("sim","Backgrund(2016)",50,70,170)
 Sim.SetFillColor(ROOT.kRed)
 
 Data = ROOT.TH1D("Data","Data",50,70,170)
