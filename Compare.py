@@ -62,7 +62,7 @@ for ievent,event in enumerate(t):
     Data.Fill(event.H_FSR)
 
 #normalize
-nData = Signal.GetEntries()
+nData = t.GetEntries()
 gg.Scale(nData/gg.Integral())
 qq.Scale(nData/qq.Integral())
 Sim.Scale(nData/Sim.Integral())
