@@ -62,9 +62,10 @@ for ievent,event in enumerate(t):
     Data.Fill(event.H_FSR)
 
 #set histoand drew
-qq.Draw()
-gg.Draw("SAME")
+
+gg.Draw()
 Sim.Draw("SAME")
+qq.Draw("SAME")
 leg.Draw("SAME")
 c.SaveAs("bkg.png")
 Data.Draw("PE1")
