@@ -61,12 +61,17 @@ for ievent,event in enumerate(DataSim):
 for ievent,event in enumerate(t):
     Data.Fill(event.H_FSR)
 
+#normalize
+nData = Signal.GetEntries()
+gg.Scale(nData/gg.Integral())
+qq.Scale(nData/qq.Integral())
+Sim.Scale(nData/Sim.Integral())
 #set histoand drew
 
 gg.Draw()
 Sim.Draw("SAME")
 qq.Draw("SAME")
 leg.Draw("SAME")
-c.SaveAs("bkg.png")
-Data.Draw("PE1")
+#c.SaveAs("bkg.png")
+Data.Draw("SMAE PE1")
 c.SaveAs("signal.png")
