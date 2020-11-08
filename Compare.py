@@ -2,9 +2,11 @@
 import ROOT
 from array import array
 
+ROOT.gStyle.SetOptStat(False)
+
 # input file and get tree
 ggTozz = ROOT.TChain(passedEvents)
-ggTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC/ GluGluToContinToZZ*.root")
+ggTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC/GluGluToContinToZZ*.root")
 
 qqTozz = ROOT.TChain(passedEvents)
 qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC/ZZTo4L*.root")
@@ -20,22 +22,22 @@ t = Signal.Get('passedEvents')
 c = ROOT.TCanvas()
 
 gg = ROOT.TH1D("gg->zz","gg->zz",50,70,170)
-gg.SetFillColor(KBlue)
+gg.SetFillColor(ROOT.kBlue)
 
 qq = ROOT.TH1D("qq->zz","qq->zz",50,70,170)
 qq.SetFillColor(7)
 
 Sim = ROOT.TH1D("sim","sim",50,70,170)
-Sim.SetFillColor(KRed)
+Sim.SetFillColor(ROOT.kRed)
 
 Data = ROOT.TH1D("Data","Data",50,70,170)
 Data.GetYaxis().SetTitle("Events / 2 GeV")
 Data.SetMarkerStyle(20);
-Data.SetMarkerColor(kBlack);
+Data.SetMarkerColor(ROOT.kBlack);
 Data.SetMarkerSize(1.2);
-Data.SetLineColor(kBlack);
+Data.SetLineColor(ROOT.kBlack);
 Data.SetLineWidth(1);
-Data.SetStats(kFALSE);
+Data.SetStats(ROOT.kFALSE);
 
 leg = ROOT.TLegend(0.7, 0.7, 0.85, 0.85)
 leg.AddEntry(Data,"Data","PE1")
@@ -64,5 +66,6 @@ qq.Draw()
 gg.Draw("SAME")
 Sim.Draw("SAME")
 leg.Draw("SAME")
+c.SaveAs("bkg.png")
 Data.Draw("PE1")
-c.SaveAs("reult.png")
+c.SaveAs("signal.png")
