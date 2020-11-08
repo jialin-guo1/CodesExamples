@@ -5,13 +5,13 @@ from array import array
 ROOT.gStyle.SetOptStat(False)
 
 # input file and get tree
-ggTozz = ROOT.TChain(passedEvents)
+ggTozz = ROOT.TChain("passedEvents")
 ggTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC/GluGluToContinToZZ*.root")
 
-qqTozz = ROOT.TChain(passedEvents)
+qqTozz = ROOT.TChain("passedEvents")
 qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC/ZZTo4L*.root")
 
-DataSim = ROOT.TChain(passedEvents)
+DataSim = ROOT.TChain("passedEvents")
 DataSim.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC/GluGluHToZZ*.root")
 DataSim.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC/VBF_HToZZTo4L*.root")
 
