@@ -50,17 +50,21 @@ leg.SetLineColor(10)
 
 #Loop over all the events and fill histogram
 for ievent,event in enumerate(ggTozz):
-    gg.Fill(event.H_FSR,0.359*1000/ievent)
+    gg.Fill(event.H_FSR)
 
 for ievent,event in enumerate(qqTozz):
-    qq.Fill(event.H_FSR,0.359*1000/ievent)
+    qq.Fill(event.H_FSR)
 
 for ievent,event in enumerate(DataSim):
-    Sim.Fill(event.H_FSR,0.359*1000/ievent)
+    Sim.Fill(event.H_FSR)
 
 for ievent,event in enumerate(t):
     Data.Fill(event.H_FSR)
 
+#normal
+gg.Scale((0.379*1000)/gg.Integral())
+qq.Scale((0.379*1000)/qq.Integral())
+Sim.Scale((0.379*1000)/Sim.Integral())
 
 #set histo and drew
 hstack = ROOT.THStack("hstack","2016reuslt")
