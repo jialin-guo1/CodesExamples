@@ -50,13 +50,13 @@ leg.SetLineColor(10)
 
 #Loop over all the events and fill histogram
 for ievent,event in enumerate(ggTozz):
-    gg.Fill(event.H_FSR,0.359*1000/gg.Integral())
+    gg.Fill(event.H_FSR,0.359*1000/ievent)
 
 for ievent,event in enumerate(qqTozz):
-    qq.Fill(event.H_FSR,0.359*1000/qq.Integral())
+    qq.Fill(event.H_FSR,0.359*1000/ievent)
 
 for ievent,event in enumerate(DataSim):
-    Sim.Fill(event.H_FSR,0.359*1000/Sim.Integral())
+    Sim.Fill(event.H_FSR,0.359*1000/ievent)
 
 for ievent,event in enumerate(t):
     Data.Fill(event.H_FSR)
