@@ -62,19 +62,19 @@ for ievent,event in enumerate(t):
     Data.Fill(event.H_FSR)
 
 #normalize
-lw = 35.9*1000
+lw = 3.59*1000
 gg.Scale(lw/gg.Integral())
 qq.Scale(lw/qq.Integral())
 Sim.Scale(lw/Sim.Integral())
 #set histoand drew
 
-gg.Draw()
+gg.Draw("histo")
 c.SaveAs("ggTozz.png")
 
-Sim.Draw()
+Sim.Draw("histo")
 c.SaveAs("Sim.png")
 
-qq.Draw()
+qq.Draw("histo")
 c.SaveAs("qqTozz.png)")
 
 leg.Draw("SAME")
