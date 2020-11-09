@@ -6,13 +6,13 @@ ROOT.gStyle.SetOptStat(False)
 
 # input file and get tree
 ggTozz = ROOT.TChain("passedEvents")
-ggTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC/GluGluToContinToZZ*.root")
+ggTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC/GluGluToContinToZZTo2e2mu_FL01.root")
 
 qqTozz = ROOT.TChain("passedEvents")
-qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC/ZZTo4L*.root")
+qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC/ZZTo4L_FL01.root")
 
 DataSim = ROOT.TChain("passedEvents")
-DataSim.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC/GluGluHToZZ*.root")
+DataSim.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC/GluGluHToZZTo4L_CN01.root")
 #DataSim.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC/VBF_HToZZTo4L*.root")
 
 Signal = ROOT.TFile('/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/2016_allsignal.root')
@@ -78,4 +78,4 @@ hstack.Add(Sim)
 hstack.Draw("histo")
 Data.Draw("sameE1")
 leg.Draw()
-c.SaveAs("result.png")
+#c.SaveAs("result.png")
