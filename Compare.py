@@ -23,12 +23,15 @@ c = ROOT.TCanvas()
 
 gg = ROOT.TH1D("gg->zz","Backgrund(2016)",50,70,170)
 gg.SetFillColor(ROOT.kBlue)
+gg.GetYaxis().SetTitle("Events / 2 GeV")
 
 qq = ROOT.TH1D("qq->zz","Backgrund(2016)",50,70,170)
 qq.SetFillColor(7)
+qq.GetYaxis().SetTitle("Events / 2 GeV")
 
 Sim = ROOT.TH1D("sim","Backgrund(2016)",50,70,170)
 Sim.SetFillColor(ROOT.kRed)
+Sim.GetYaxis().SetTitle("Events / 2 GeV")
 
 Data = ROOT.TH1D("Data","Data",50,70,170)
 Data.GetYaxis().SetTitle("Events / 2 GeV")
