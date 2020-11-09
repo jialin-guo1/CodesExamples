@@ -69,15 +69,15 @@ Sim.Scale(lw/Sim.Integral())
 #set histoand drew
 
 gg.Draw("histo")
-c.SaveAs("ggTozz.png")
+#c.SaveAs("ggTozz.png")
 
-Sim.Draw("histo")
-c.SaveAs("Sim.png")
+Sim.Draw("SAME histo")
+#c.SaveAs("Sim.png")
 
-qq.Draw("histo")
-c.SaveAs("qqTozz.png")
+qq.Draw("SAME histo")
+#c.SaveAs("qqTozz.png")
 
 leg.Draw("SAME")
 #c.SaveAs("bkg.png")
-Data.Draw("PE1")
+Data.Draw("SMAE PE1")
 c.SaveAs("result.png")
