@@ -66,18 +66,12 @@ lw = 0.359*1000
 gg.Scale(lw/gg.Integral())
 qq.Scale(lw/qq.Integral())
 Sim.Scale(lw/Sim.Integral())
-#set histoand drew
-
-gg.Draw("histo")
-#c.SaveAs("ggTozz.png")
-
-Sim.Draw("SAME histo")
-#c.SaveAs("Sim.png")
-
-qq.Draw("SAME histo")
-#c.SaveAs("qqTozz.png")
-
-leg.Draw("SAME")
-#c.SaveAs("bkg.png")
-Data.Draw("SMAE PE1")
+#set histo and drew
+hstack = ROOT.THStack("hstack","2016reuslt")
+hstack.Add(gg)
+hstack.Add(qq)
+hstack.Add(Sim)
+hstack.Draw("histo")
+Data.Draw("smaePE1")
+leg.Draw()
 c.SaveAs("result.png")
