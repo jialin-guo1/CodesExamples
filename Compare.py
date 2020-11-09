@@ -40,7 +40,7 @@ Data.SetMarkerColor(ROOT.kBlack)
 Data.SetMarkerSize(1.2)
 Data.SetLineColor(ROOT.kBlack)
 Data.SetLineWidth(1)
-Data.SetStats(ROOT.kFALSE)
+#Data.SetStats(ROOT.kFALSE)
 
 leg = ROOT.TLegend(0.7, 0.7, 0.85, 0.85)
 leg.AddEntry(Data,"Data","PE1")
