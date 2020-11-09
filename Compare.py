@@ -63,15 +63,21 @@ for ievent,event in enumerate(t):
 
 #normalize
 lw = 35.9*1000
-gg.Scale(lw/gg.GetEntries())
-qq.Scale(lw/qq.GetEntries())
-Sim.Scale(lw/Sim.GetEntries())
+gg.Scale(lw/gg.Integral())
+qq.Scale(lw/qq.Integral())
+Sim.Scale(lw/Sim.Integral())
 #set histoand drew
 
 gg.Draw()
-Sim.Draw("SAME")
-qq.Draw("SAME")
+c.SaveAs("ggTozz.png")
+
+Sim.Draw()
+c.SaveAs("Sim.png")
+
+qq.Draw()
+c.SaveAs("qqTozz.png)")
+
 leg.Draw("SAME")
 #c.SaveAs("bkg.png")
-Data.Draw("SMAE PE1")
+Data.Draw("PE1")
 c.SaveAs("result.png")
