@@ -70,6 +70,7 @@ qq.Scale((0.379*1000)/qq.Integral())
 Sim.Scale((0.379*1000)/Sim.Integral())
 
 #set histo and drew
+Data.Draw("E1")
 hstack = ROOT.THStack("hstack","2016reuslt")
 hstack.Add(gg)
 hstack.Add(qq)
