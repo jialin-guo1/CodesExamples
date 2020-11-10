@@ -65,9 +65,9 @@ for ievent,event in enumerate(t):
     Data.Fill(event.H_FSR,event.weight)
 
 #normal
-gg.Scale(35.9*1000/*gg.Integral())
-qq.Scale(35.9*1000/*qq.Integral())
-Sim.Scale(35.9*1000/*Sim.Integral())
+gg.Scale(35.9*1000/gg.Integral())
+qq.Scale(35.9*1000/qq.Integral())
+Sim.Scale(35.9*1000/Sim.Integral())
 
 #set histo and drew
 Data.Draw("PE1")
