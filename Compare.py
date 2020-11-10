@@ -53,19 +53,19 @@ leg.SetLineColor(10)
 
 #Loop over all the events and fill histogram
 for ievent,event in enumerate(ggTozz):
-    gg.Fill(event.H_FSR,event.weight)
+    gg.Fill(event.H_FSR)
 
 for ievent,event in enumerate(qqTozz):
-    qq.Fill(event.H_FSR,event.weight)
+    qq.Fill(event.H_FSR)
 
 for ievent,event in enumerate(DataSim):
-    Sim.Fill(event.H_FSR,event.weight)
+    Sim.Fill(event.H_FSR)
 
 for ievent,event in enumerate(t):
-    Data.Fill(event.H_FSR,event.weight)
+    Data.Fill(event.H_FSR)
 
 #normal
-gg.Scale(35.9*0.00737/gg.Integral())
+gg.Scale(35.9*1000*0.00737/gg.Integral())
 qq.Scale(35.9*1000/qq.Integral())
 Sim.Scale(35.9*12.18/Sim.Integral())
 
