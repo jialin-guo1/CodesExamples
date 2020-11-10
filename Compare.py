@@ -53,29 +53,29 @@ leg.SetLineColor(10)
 
 #Loop over all the events and fill histogram
 for ievent,event in enumerate(ggTozz):
-    gg.Fill(event.H_FSR)
+    gg.Fill(event.H_FSR,event.weight)
 
 for ievent,event in enumerate(qqTozz):
-    qq.Fill(event.H_FSR)
+    qq.Fill(event.H_FSR,event.weight)
 
 for ievent,event in enumerate(DataSim):
-    Sim.Fill(event.H_FSR)
+    Sim.Fill(event.H_FSR,event.weight)
 
 for ievent,event in enumerate(t):
-    Data.Fill(event.H_FSR)
+    Data.Fill(event.H_FSR,event.weight)
 
 #normal
-gg.Scale(35.9*1000*0.00737/gg.Integral())
+gg.Scale(35.9*1000/gg.Integral())
 qq.Scale(35.9*1000/qq.Integral())
-Sim.Scale(35.9*12.18/Sim.Integral())
+Sim.Scale(35.9*1000/Sim.Integral())
 
 #set histo and drew
 Data.Draw("PE1")
-#hstack = ROOT.THStack("hstack","2016reuslt")
-#hstack.Add(gg)
-#hstack.Add(qq)
-#hstack.Add(Sim)
-#hstack.Draw("histo")
-#leg.Draw()
-#Data.Draw("samePE1")
+hstack = ROOT.THStack("hstack","2016reuslt")
+hstack.Add(gg)
+hstack.Add(qq)
+hstack.Add(Sim)
+hstack.Draw("histo")
+leg.Draw()
+Data.Draw("samePE1")
 c.SaveAs("sigal.png")
