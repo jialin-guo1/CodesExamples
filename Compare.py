@@ -33,7 +33,7 @@ Sim = ROOT.TH1D("sim","Backgrund(2016)",50,70,170)
 Sim.SetFillColor(ROOT.kRed)
 Sim.GetYaxis().SetTitle("Events / 2 GeV")
 
-Data = ROOT.TH1D("Data","Data",50,70,170)
+Data = ROOT.TH1D("Data","Data(2016)",50,70,170)
 Data.GetYaxis().SetTitle("Events / 2 GeV")
 Data.SetMarkerStyle(20)
 Data.SetMarkerColor(ROOT.kBlack)
