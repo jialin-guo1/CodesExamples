@@ -13,7 +13,7 @@ qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/ZZTo4L*.root")
 
 DataSim = ROOT.TChain("passedEvents")
 DataSim.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluHToZZTo4L*.root")
-DataSim.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/VBF_HToZZTo4L*.root")
+#DataSim.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/VBF_HToZZTo4L*.root")
 
 Signal = ROOT.TFile('/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/2016_allsignal_new.root')
 t = Signal.Get('passedEvents')
@@ -65,9 +65,9 @@ for ievent,event in enumerate(t):
     Data.Fill(event.H_FSR,event.weight)
 
 #normal
-gg.Scale(35.9*1000/gg.Integral())
+gg.Scale(35.9*0.737/gg.Integral())
 qq.Scale(35.9*1000/qq.Integral())
-Sim.Scale(35.9*1000/Sim.Integral())
+Sim.Scale(35.9*12.18/Sim.Integral())
 
 #set histo and drew
 Data.Draw("PE1")
