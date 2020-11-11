@@ -66,7 +66,7 @@ for ievent,event in enumerate(t):
 
 #normal
 gg.Scale(35.9*1000*0.00637/gg.Integral())
-qq.Scale(35.9*1000/qq.Integral())
+qq.Scale(35.9*1000*2.468/qq.Integral())
 Sim_gg.Scale(35.9*12.18/Sim_gg.Integral())
 Sim_qq.Scale(35.9*1.044/Sim_qq.Integral())
 
