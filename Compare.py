@@ -11,9 +11,11 @@ ggTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluToContin
 qqTozz = ROOT.TChain("passedEvents")
 qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/ZZTo4L*.root")
 
-DataSim = ROOT.TChain("passedEvents")
+DataSim_gg = ROOT.TChain("passedEvents")
 DataSim.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluHToZZTo4L*.root")
-#DataSim.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/VBF_HToZZTo4L*.root")
+
+DataSim_qq = ROOT.TChain("passedEvents")
+DataSim_qq.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/VBF_HToZZTo4L*.root")
 
 Signal = ROOT.TFile('/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/2016_allsignal_new.root')
 t = Signal.Get('passedEvents')
@@ -29,9 +31,13 @@ qq = ROOT.TH1D("qq->zz","Backgrund(2016)",50,70,170)
 qq.SetFillColor(7)
 qq.GetYaxis().SetTitle("Events / 2 GeV")
 
-Sim = ROOT.TH1D("sim","Backgrund(2016)",50,70,170)
-Sim.SetFillColor(ROOT.kRed)
-Sim.GetYaxis().SetTitle("Events / 2 GeV")
+Sim_gg = ROOT.TH1D("Sim_gg","Backgrund(2016)",50,70,170)
+Sim_gg.SetFillColor(ROOT.kRed)
+Sim_gg.GetYaxis().SetTitle("Events / 2 GeV")
+
+Sim_qq = ROOT.TH1D("Sim_qq","Backgrund(2016)",50,70,170)
+Sim_qq.SetFillColor(ROOT.kRed)
+Sim_qq.GetYaxis().SetTitle("Events / 2 GeV")
 
 Data = ROOT.TH1D("Data","Data(2016)",50,70,170)
 Data.GetYaxis().SetTitle("Events / 2 GeV")
@@ -58,16 +64,26 @@ for ievent,event in enumerate(ggTozz):
 for ievent,event in enumerate(qqTozz):
     qq.Fill(event.H_FSR,event.weight)
 
-for ievent,event in enumerate(DataSim):
-    Sim.Fill(event.H_FSR,event.weight)
+for ievent,event in enumerate(DataSim_gg):
+    Sim_gg.Fill(event.H_FSR,event.weight)
+
+for ievent,event in enumerate(DataSim_qq):
+    Sim_qq.Fill(event.H_FSR,event.weight)
 
 for ievent,event in enumerate(t):
     Data.Fill(event.H_FSR,event.weight)
 
 #normal
-gg.Scale(35.9*1000/gg.Integral())
+gg.Scale(35.9*1000*0.00637/gg.Integral())
 qq.Scale(35.9*1000/qq.Integral())
-Sim.Scale(35.9*1000/Sim.Integral())
+Sim_gg.Scale(35.9*12.18/Sim_gg.Integral())
+Sim_qq.Scale(35.9*1.044/Sim_qq.Integral())
+
+Sim = ROOT.TH1D("Sim","Backgrund(2016)",50,70,170)
+Sim.SetFillColor(ROOT.kRed)
+Sim.Sumw2()
+Sim.Add(Sim_gg,Sim_qq)
+
 
 #set histo and drew
 Data.Draw("PE1")
