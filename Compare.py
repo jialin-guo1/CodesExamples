@@ -48,15 +48,6 @@ Data.SetLineColor(ROOT.kBlack)
 Data.SetLineWidth(1)
 #Data.SetStats(ROOT.kFALSE)
 
-leg = ROOT.TLegend(0.7, 0.7, 0.85, 0.85)
-leg.AddEntry(Data,"Data","PE1")
-leg.AddEntry(gg,"gg->zz","f")
-leg.AddEntry(qq,"qq->zz","f")
-leg.AddEntry(Sim,"H(125)","f")
-leg.SetTextSize(0.038)
-leg.SetFillColor(10)
-leg.SetLineColor(10)
-
 #Loop over all the events and fill histogram
 for ievent,event in enumerate(ggTozz):
     gg.Fill(event.H_FSR,event.weight)
@@ -83,6 +74,16 @@ Sim = ROOT.TH1D("Sim","Backgrund(2016)",50,70,170)
 Sim.SetFillColor(ROOT.kRed)
 Sim.Sumw2()
 Sim.Add(Sim_gg,Sim_qq)
+
+# set leg
+leg = ROOT.TLegend(0.7, 0.7, 0.85, 0.85)
+leg.AddEntry(Data,"Data","PE1")
+leg.AddEntry(gg,"gg->zz","f")
+leg.AddEntry(qq,"qq->zz","f")
+leg.AddEntry(Sim,"H(125)","f")
+leg.SetTextSize(0.038)
+leg.SetFillColor(10)
+leg.SetLineColor(10)
 
 
 #set histo and drew
