@@ -14,8 +14,8 @@ qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC2/ZZTo4L*.root")
 DataSim_gg = ROOT.TChain("passedEvents")
 DataSim_gg.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC2/GluGluHToZZTo4L*.root")
 
-DataSim_qq = ROOT.TChain("passedEvents")
-DataSim_qq.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC2/VBF_HToZZTo4L*.root")
+#DataSim_qq = ROOT.TChain("passedEvents")
+#DataSim_qq.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC2/VBF_HToZZTo4L*.root")
 
 Signal = ROOT.TFile('/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/2016_allsignal_new.root')
 t = Signal.Get('passedEvents')
@@ -58,8 +58,8 @@ for ievent,event in enumerate(qqTozz):
 for ievent,event in enumerate(DataSim_gg):
     Sim_gg.Fill(event.H_FSR,35.9*12.18*event.weight)
 
-for ievent,event in enumerate(DataSim_qq):
-    Sim_qq.Fill(event.H_FSR,35.9*1.044*event.weight)
+#for ievent,event in enumerate(DataSim_qq):
+#    Sim_qq.Fill(event.H_FSR,35.9*1.044*event.weight)
 
 for ievent,event in enumerate(t):
     Data.Fill(event.H_FSR,event.weight)
@@ -70,10 +70,10 @@ for ievent,event in enumerate(t):
 #Sim_gg.Scale(35.9*12.18)
 #Sim_qq.Scale(35.9*1.044)
 
-Sim = ROOT.TH1D("Sim","Backgrund(2016)",50,70,170)
-Sim.SetFillColor(ROOT.kRed)
-Sim.Sumw2()
-Sim.Add(Sim_gg,Sim_qq)
+#Sim = ROOT.TH1D("Sim","Backgrund(2016)",50,70,170)
+#Sim.SetFillColor(ROOT.kRed)
+#Sim.Sumw2()
+#Sim.Add(Sim_gg,Sim_qq)
 
 # set leg
 leg = ROOT.TLegend(0.7, 0.7, 0.85, 0.85)
@@ -91,7 +91,7 @@ Data.Draw("PE1")
 hstack = ROOT.THStack("hstack","2016reuslt")
 hstack.Add(gg)
 hstack.Add(qq)
-hstack.Add(Sim)
+hstack.Add(Sim_gg)
 hstack.Draw("histo")
 leg.Draw()
 Data.Draw("samePE1")
