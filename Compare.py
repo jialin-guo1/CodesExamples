@@ -6,16 +6,16 @@ ROOT.gStyle.SetOptStat(False)
 
 # input file and get tree
 ggTozz = ROOT.TChain("passedEvents")
-ggTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluToContinToZZ*.root")
+ggTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC2/GluGluToContinToZZ*.root")
 
 qqTozz = ROOT.TChain("passedEvents")
-qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/ZZTo4L*.root")
+qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC2/ZZTo4L*.root")
 
 DataSim_gg = ROOT.TChain("passedEvents")
-DataSim_gg.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluHToZZTo4L*.root")
+DataSim_gg.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC2/GluGluHToZZTo4L*.root")
 
 DataSim_qq = ROOT.TChain("passedEvents")
-DataSim_qq.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/VBF_HToZZTo4L*.root")
+DataSim_qq.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC2/VBF_HToZZTo4L*.root")
 
 Signal = ROOT.TFile('/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/2016_allsignal_new.root')
 t = Signal.Get('passedEvents')
