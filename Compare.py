@@ -50,25 +50,25 @@ Data.SetLineWidth(1)
 
 #Loop over all the events and fill histogram
 for ievent,event in enumerate(ggTozz):
-    gg.Fill(event.H_FSR,event.weight)
+    gg.Fill(event.H_FSR,35.9*1000*0.00637*event.weight)
 
 for ievent,event in enumerate(qqTozz):
-    qq.Fill(event.H_FSR,event.weight)
+    qq.Fill(event.H_FSR,35.9*1000*2.468*event.weight)
 
 for ievent,event in enumerate(DataSim_gg):
-    Sim_gg.Fill(event.H_FSR,event.weight)
+    Sim_gg.Fill(event.H_FSR,35.9*12.18*event.weight)
 
 for ievent,event in enumerate(DataSim_qq):
-    Sim_qq.Fill(event.H_FSR,event.weight)
+    Sim_qq.Fill(event.H_FSR,35.9*1.044*event.weight)
 
 for ievent,event in enumerate(t):
     Data.Fill(event.H_FSR,event.weight)
 
 #normal
-gg.Scale(35.9*1000*0.00637)
-qq.Scale(35.9*1000*2.468)
-Sim_gg.Scale(35.9*12.18)
-Sim_qq.Scale(35.9*1.044)
+#gg.Scale(35.9*1000*0.00637)
+#qq.Scale(35.9*1000*2.468)
+#Sim_gg.Scale(35.9*12.18)
+#Sim_qq.Scale(35.9*1.044)
 
 Sim = ROOT.TH1D("Sim","Backgrund(2016)",50,70,170)
 Sim.SetFillColor(ROOT.kRed)
