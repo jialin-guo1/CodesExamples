@@ -92,10 +92,10 @@ leg.SetLineColor(10)
 
 #set histo and drew
 Data.Draw("PE1")
-hstack = ROOT.THStack("hstack","2016reuslt")
+#hstack = ROOT.THStack("hstack","2016reuslt")
 #hstack.Add(gg)
 #hstack.Add(qq)
-hstack.Add(Sim_gg)
+#hstack.Add(Sim_gg)
 hstack.Draw("histo")
 leg.Draw()
 Data.Draw("samePE1")
