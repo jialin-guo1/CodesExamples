@@ -62,7 +62,7 @@ for ievent,event in enumerate(DataSim_gg):
 #    Sim_qq.Fill(event.H_FSR,35.9*1.044*event.weight)
 
 for ievent,event in enumerate(t):
-    Data.Fill(event.H_FSR,event.weight)
+    Data.Fill(event.H_FSR)
 
 
 print "number of ggHToZZ = " + str(Sim_gg.Integral())
