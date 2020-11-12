@@ -65,10 +65,10 @@ for ievent,event in enumerate(t):
     Data.Fill(event.H_FSR,event.weight)
 
 #normal
-gg.Scale(35.9*1000*0.00637/gg.Integral())
-qq.Scale(35.9*1000*2.468/qq.Integral())
-Sim_gg.Scale(35.9*12.18/Sim_gg.Integral())
-Sim_qq.Scale(35.9*1.044/Sim_qq.Integral())
+gg.Scale(35.9*1000*0.00637)
+qq.Scale(35.9*1000*2.468)
+Sim_gg.Scale(35.9*12.18)
+Sim_qq.Scale(35.9*1.044)
 
 Sim = ROOT.TH1D("Sim","Backgrund(2016)",50,70,170)
 Sim.SetFillColor(ROOT.kRed)
