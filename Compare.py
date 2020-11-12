@@ -64,8 +64,9 @@ for ievent,event in enumerate(DataSim_gg):
 for ievent,event in enumerate(t):
     Data.Fill(event.H_FSR,event.weight)
 
-print "number of ggHToZZ = " + str(Sim_gg.GetBinContent(1))
-print "number of data = " + str(Data.GetBinContent(1))
+
+print "number of ggHToZZ = " + str(Sim_gg.Integral())
+print "number of data = " + str(Data.Integral())
 
 #normal
 #gg.Scale(35.9*1000*0.00637)
