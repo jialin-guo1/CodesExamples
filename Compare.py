@@ -56,7 +56,7 @@ for ievent,event in enumerate(qqTozz):
     qq.Fill(event.H_FSR,35.9*1000*2.468*event.weight)
 
 for ievent,event in enumerate(DataSim_gg):
-    Sim_gg.Fill(event.H_FSR,35.9*12.18*event.weight)
+    Sim_gg.Fill(event.H_FSR,35.9*12.18*event.weight/event.k_gg)
 
 #for ievent,event in enumerate(DataSim_qq):
 #    Sim_qq.Fill(event.H_FSR,35.9*1.044*event.weight)
