@@ -100,6 +100,10 @@ for ievent,event in enumerate(t):
 
 
 print "number of ggHToZZ = " + str(Sim_gg.Integral())
+print "number of VBFHToZZ = " + str(Sim_qq.Integral())
+print "number of WplusH = " + str(Sim_WplusH.Integral())
+print "number of WminH = " + str(Sim_WminH.Integral())
+print "number of ZH = " + str(Sim_ZH.Integral())
 print "number of data = " + str(Data.Integral())
 
 #normal
@@ -115,6 +119,8 @@ Sim.Add(Sim_gg,Sim_qq)
 Sim.Add(Sim,Sim_ZH)
 Sim.Add(Sim,Sim_WplusH)
 Sim.Add(Sim,Sim_WminH)
+
+print "number of all MC = " + str(Sim.Integral())
 
 
 # set leg
