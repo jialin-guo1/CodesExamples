@@ -140,7 +140,7 @@ Sim.Add(Sim,Sim_WminH)
 Sim.Add(Sim,Sim_ttH)
 
 qqSum = ROOT.TH1D("qqSum","Backgrund(2016)",50,70,170)
-qqSum.Sim.SetFillColor(ROOT.kRed)
+qqSum.SetFillColor(ROOT.kRed)
 qqSum.Sumw2()
 qqSum.Add(qq,qq0)
 
