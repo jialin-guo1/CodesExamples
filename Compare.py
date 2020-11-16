@@ -75,7 +75,7 @@ qq = ROOT.TH1D("qq->zz","Backgrund(2016)",50,70,170)
 qq.SetFillColor(7)
 qq.GetYaxis().SetTitle("Events / 2 GeV")
 
-qq0 = ROOT.TH1D("qq->zz","Backgrund(2016)",50,70,170)
+qq0 = ROOT.TH1D("qq->zz0","Backgrund(2016)",50,70,170)
 qq0.SetFillColor(7)
 qq0.GetYaxis().SetTitle("Events / 2 GeV")
 
@@ -182,7 +182,7 @@ Sim.Add(Sim,Sim_ttH)
 
 ggSum = ROOT.TH1D("qqSum","Backgrund(2016)",50,70,170)
 ggSum.SetFillColor(ROOT.kBlue)
-ggSum.Sim.Sumw2()
+ggSum.Sumw2()
 ggSum.Add(gg2e2u,gg2u2t)
 ggSum.Add(ggSum,gg4e)
 ggSum.Add(ggSum,gg4u)
