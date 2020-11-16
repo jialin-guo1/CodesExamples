@@ -200,7 +200,7 @@ print "number of all MC = " + str(Sim.Integral())
 # set leg
 leg = ROOT.TLegend(0.7, 0.7, 0.85, 0.85)
 leg.AddEntry(Data,"Data","PE1")
-leg.AddEntry(gg,"gg->zz","f")
+leg.AddEntry(ggSum,"gg->zz","f")
 leg.AddEntry(qq,"qq->zz","f")
 leg.AddEntry(Sim_gg,"H(125)","f")
 leg.SetTextSize(0.038)
