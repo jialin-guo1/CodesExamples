@@ -59,6 +59,10 @@ Sim_WminH = ROOT.TH1D("Sim_WminH","Backgrund(2016)",50,70,170)
 Sim_WminH.SetFillColor(ROOT.kRed)
 Sim_WminH.GetYaxis().SetTitle("Events / 2 GeV")
 
+#Sim_ttH = ROOT.TH1D("Sim_ttH","Backgrund(2016)",50,70,170)
+#Sim_ttH.SetFillColor(ROOT.kRed)
+#Sim_ttH.GetYaxis().SetTitle("Events / 2 GeV")
+
 Sim_ZH = ROOT.TH1D("Sim_ZH","Backgrund(2016)",50,70,170)
 Sim_ZH.SetFillColor(ROOT.kRed)
 Sim_ZH.GetYaxis().SetTitle("Events / 2 GeV")
@@ -95,6 +99,9 @@ for ievent,event in enumerate(DataSim_WminH):
 for ievent,event in enumerate(DataSim_ZH):
     Sim_ZH.Fill(event.H_FSR,35.9*0.668*event.weight/event.cross)
 
+#for ievent,event in enumerate(DataSim_ttH):
+#    Sim_ttH.Fill(event.H_FSR,35.9*0.393*event.weight/event.cross)
+
 for ievent,event in enumerate(t):
     Data.Fill(event.H_FSR)
 
@@ -119,6 +126,7 @@ Sim.Add(Sim_gg,Sim_qq)
 Sim.Add(Sim,Sim_ZH)
 Sim.Add(Sim,Sim_WplusH)
 Sim.Add(Sim,Sim_WminH)
+#Sim.Add(Sim,Sim_ttH)
 
 print "number of all MC = " + str(Sim.Integral())
 
@@ -136,12 +144,12 @@ leg.SetLineColor(10)
 
 #set histo and drew
 Data.Draw("E1")
-#hstack = ROOT.THStack("hstack","2016reuslt")
-#hstack.Add(gg)
-#hstack.Add(qq)
-#hstack.Add(Sim_gg)
-#hstack.Draw("histo")
-Sim.Draw("same histo")
+hstack = ROOT.THStack("hstack","2016reuslt")
+hstack.Add(gg)
+hstack.Add(qq)
+hstack.Add(Sim)
+hstack.Draw("histo")
+#Sim.Draw("same histo")
 leg.Draw()
 Data.Draw("same E1")
 c.SaveAs("ggVBF.png")
