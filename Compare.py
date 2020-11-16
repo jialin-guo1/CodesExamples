@@ -14,8 +14,8 @@ qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/ZZTo4L*.root")
 DataSim_gg = ROOT.TChain("passedEvents")
 DataSim_gg.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/GluGluHToZZTo4L*.root")
 
-#DataSim_qq = ROOT.TChain("passedEvents")
-#DataSim_qq.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC2/VBF_HToZZTo4L*.root")
+DataSim_qq = ROOT.TChain("passedEvents")
+DataSim_qq.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC2/VBF_HToZZTo4L*.root")
 
 Signal = ROOT.TFile('/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/2016_allsignal_new.root')
 t = Signal.Get('passedEvents')
