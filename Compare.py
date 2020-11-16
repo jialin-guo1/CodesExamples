@@ -9,7 +9,10 @@ ggTozz = ROOT.TChain("passedEvents")
 ggTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/GluGluToContinToZZ*.root")
 
 qqTozz = ROOT.TChain("passedEvents")
-qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL04.root")
+qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL02.root")
+
+qqTozz0 = ROOT.TChain("passedEvents")
+qqTozz0.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL04.root")
 
 DataSim_gg = ROOT.TChain("passedEvents")
 DataSim_gg.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/GluGluHToZZTo4L*.root")
@@ -42,6 +45,10 @@ gg.GetYaxis().SetTitle("Events / 2 GeV")
 qq = ROOT.TH1D("qq->zz","Backgrund(2016)",50,70,170)
 qq.SetFillColor(7)
 qq.GetYaxis().SetTitle("Events / 2 GeV")
+
+qq0 = ROOT.TH1D("qq->zz","Backgrund(2016)",50,70,170)
+qq0.SetFillColor(7)
+qq0.GetYaxis().SetTitle("Events / 2 GeV")
 
 Sim_gg = ROOT.TH1D("Sim_gg","Backgrund(2016)",50,70,170)
 Sim_gg.SetFillColor(ROOT.kRed)
@@ -82,7 +89,10 @@ for ievent,event in enumerate(ggTozz):
     gg.Fill(event.H_FSR,35.9*1000*0.01434*event.weight/event.cross*event.k_gg)
 
 for ievent,event in enumerate(qqTozz):
-    qq.Fill(event.H_FSR,35.9*1000*1.256*event.weight/event.cross*event.k_qq_qcd_pt*event.k_qq_ewk)
+    qq.Fill(event.H_FSR,35.9*1000*1.121*event.weight/event.cross*event.k_qq_qcd_pt*event.k_qq_ewk)
+
+for ievent,event in enumerate(qqTozz0):
+    qq0.Fill(event.H_FSR,35.9*1000*1.256*event.weight/event.cross*event.k_qq_qcd_pt*event.k_qq_ewk)
 
 for ievent,event in enumerate(DataSim_gg):
     Sim_gg.Fill(event.H_FSR,35.9*12.18*event.weight/event.cross)
@@ -129,6 +139,11 @@ Sim.Add(Sim,Sim_WplusH)
 Sim.Add(Sim,Sim_WminH)
 Sim.Add(Sim,Sim_ttH)
 
+qqSum = ROOT.TH1D("qqSum","Backgrund(2016)",50,70,170)
+qqSum.Sim.SetFillColor(ROOT.kRed)
+qqSum.Sumw2()
+qqSum.Add(qq,qq0)
+
 print "number of all MC = " + str(Sim.Integral())
 
 
@@ -151,7 +166,7 @@ Data.Draw("E1")
 #hstack.Add(Sim)
 #hstack.Draw("same histo")
 Sim.Draw("same histo")
-qq.Draw("same histo")
+qqSum.Draw("same histo")
 gg.Draw("same histo")
 leg.Draw()
 Data.Draw("same E1")
