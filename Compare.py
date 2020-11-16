@@ -27,7 +27,7 @@ DataSim_ZH = ROOT.TChain("passedEvents")
 DataSim_ZH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/ZH_HToZZ*.root")
 
 DataSim_ttH = ROOT.TChain("passedEvents")
-DataSim_ttH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC2/ZH_HToZZ*.root")
+DataSim_ttH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/ZH_HToZZ*.root")
 
 Signal = ROOT.TFile('/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/2016_allsignal_new.root')
 t = Signal.Get('passedEvents')
