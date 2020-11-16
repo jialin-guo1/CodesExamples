@@ -155,3 +155,7 @@ gg.Draw("same histo")
 leg.Draw()
 Data.Draw("same E1")
 c.SaveAs("All.png")
+
+qq.Draw("histo")
+Data.Draw("same E1")
+c.SaveAs("qqZZ.png")
