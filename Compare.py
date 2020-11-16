@@ -21,7 +21,7 @@ ggTozz4t = ROOT.TChain("passedEvents")
 ggTozz4t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/GluGluToContinToZZTo4tau_FL01.root")
 
 qqTozz = ROOT.TChain("passedEvents")
-qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL02.root")
+qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL04.root")
 
 
 qqTozz0 = ROOT.TChain("passedEvents")
