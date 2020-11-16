@@ -15,16 +15,16 @@ DataSim_gg = ROOT.TChain("passedEvents")
 DataSim_gg.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/GluGluHToZZTo4L*.root")
 
 DataSim_qq = ROOT.TChain("passedEvents")
-DataSim_qq.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC2/VBF_HToZZTo4L*.root")
+DataSim_qq.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/VBF_HToZZTo4L*.root")
 
 DataSim_WplusH = ROOT.TChain("passedEvents")
-DataSim_WplusH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC2/WplusH*.root")
+DataSim_WplusH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/WplusH*.root")
 
 DataSim_WminH = ROOT.TChain("passedEvents")
-DataSim_WminH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC2/WminusH*.root")
+DataSim_WminH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/WminusH*.root")
 
 DataSim_ZH = ROOT.TChain("passedEvents")
-DataSim_ZH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC2/ZH_HToZZ*.root")
+DataSim_ZH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/ZH_HToZZ*.root")
 
 #DataSim_ttH = ROOT.TChain("passedEvents")
 #DataSim_ttH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC2/ZH_HToZZ*.root")
