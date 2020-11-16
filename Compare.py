@@ -87,13 +87,13 @@ for ievent,event in enumerate(DataSim_qq):
     Sim_qq.Fill(event.H_FSR,35.9*1.044*event.weight/event.cross)
 
 for ievent,event in enumerate(DataSim_WplusH):
-    Sim_qq.Fill(event.H_FSR,35.9*0.232*event.weight/event.cross)
+    Sim_WplusH.Fill(event.H_FSR,35.9*0.232*event.weight/event.cross)
 
 for ievent,event in enumerate(DataSim_WminH):
-    Sim_qq.Fill(event.H_FSR,35.9*0.147*event.weight/event.cross)
+    Sim_WminH.Fill(event.H_FSR,35.9*0.147*event.weight/event.cross)
 
 for ievent,event in enumerate(DataSim_ZH):
-    Sim_qq.Fill(event.H_FSR,35.9*0.668*event.weight/event.cross)
+    Sim_ZH.Fill(event.H_FSR,35.9*0.668*event.weight/event.cross)
 
 for ievent,event in enumerate(t):
     Data.Fill(event.H_FSR)
