@@ -25,7 +25,7 @@ qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL02.root")
 
 
 qqTozz0 = ROOT.TChain("passedEvents")
-qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL03.root")
+qqTozz0.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL03.root")
 
 DataSim_gg = ROOT.TChain("passedEvents")
 DataSim_gg.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/GluGluHToZZTo4L*.root")
