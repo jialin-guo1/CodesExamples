@@ -10,6 +10,7 @@ ggTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/GluGluToContin
 
 qqTozz = ROOT.TChain("passedEvents")
 qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL02.root")
+qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL03.root")
 
 qqTozz0 = ROOT.TChain("passedEvents")
 qqTozz0.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL04.root")
@@ -89,7 +90,7 @@ for ievent,event in enumerate(ggTozz):
     gg.Fill(event.H_FSR,35.9*1000*0.01434*event.weight/event.cross*event.k_gg)
 
 for ievent,event in enumerate(qqTozz):
-    qq.Fill(event.H_FSR,35.9*1000*1.121*event.weight/event.cross*event.k_qq_qcd_pt*event.k_qq_ewk)
+    qq.Fill(event.H_FSR,35.9*1000*event.weight*event.k_qq_qcd_pt*event.k_qq_ewk)
 
 for ievent,event in enumerate(qqTozz0):
     qq0.Fill(event.H_FSR,35.9*1000*1.256*event.weight/event.cross*event.k_qq_qcd_pt*event.k_qq_ewk)
@@ -166,7 +167,7 @@ Data.Draw("E1")
 #hstack.Add(Sim)
 #hstack.Draw("same histo")
 Sim.Draw("same histo")
-qq0.Draw("same histo")
+qq.Draw("same histo")
 gg.Draw("same histo")
 leg.Draw()
 Data.Draw("same E1")
