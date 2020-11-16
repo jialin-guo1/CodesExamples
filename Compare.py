@@ -58,8 +58,8 @@ for ievent,event in enumerate(qqTozz):
 for ievent,event in enumerate(DataSim_gg):
     Sim_gg.Fill(event.H_FSR,35.9*12.18*event.weight/event.cross)
 
-#for ievent,event in enumerate(DataSim_qq):
-#    Sim_qq.Fill(event.H_FSR,35.9*1.044*event.weight)
+for ievent,event in enumerate(DataSim_qq):
+    Sim_qq.Fill(event.H_FSR,35.9*1.044*event.weight)
 
 for ievent,event in enumerate(t):
     Data.Fill(event.H_FSR)
@@ -74,10 +74,10 @@ print "number of data = " + str(Data.Integral())
 #Sim_gg.Scale(35.9*12.18)
 #Sim_qq.Scale(35.9*1.044)
 
-#Sim = ROOT.TH1D("Sim","Backgrund(2016)",50,70,170)
-#Sim.SetFillColor(ROOT.kRed)
-#Sim.Sumw2()
-#Sim.Add(Sim_gg,Sim_qq)
+Sim = ROOT.TH1D("Sim","Backgrund(2016)",50,70,170)
+Sim.SetFillColor(ROOT.kRed)
+Sim.Sumw2()
+Sim.Add(Sim_gg,Sim_qq)
 
 # set leg
 leg = ROOT.TLegend(0.7, 0.7, 0.85, 0.85)
@@ -91,13 +91,13 @@ leg.SetLineColor(10)
 
 
 #set histo and drew
-Data.Draw("PE1")
+Data.Draw("E1")
 #hstack = ROOT.THStack("hstack","2016reuslt")
 #hstack.Add(gg)
 #hstack.Add(qq)
 #hstack.Add(Sim_gg)
 #hstack.Draw("histo")
-Sim_gg.Draw("same histo")
+Sim.Draw("same histo")
 leg.Draw()
-Data.Draw("samePE1")
-c.SaveAs("ggH.png")
+Data.Draw("same E1")
+c.SaveAs("ggVBF.png")
