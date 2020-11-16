@@ -82,7 +82,7 @@ for ievent,event in enumerate(ggTozz):
     gg.Fill(event.H_FSR,35.9*1000*0.01434*event.weight/event.cross)
 
 for ievent,event in enumerate(qqTozz):
-    qq.Fill(event.H_FSR,35.9*1000*2.468*event.weight/event.cross)
+    qq.Fill(event.H_FSR,35.9*1000*1.256*event.weight/event.cross)
 
 for ievent,event in enumerate(DataSim_gg):
     Sim_gg.Fill(event.H_FSR,35.9*12.18*event.weight/event.cross)
@@ -146,7 +146,7 @@ leg.SetLineColor(10)
 Data.Draw("E1")
 hstack = ROOT.THStack("hstack","2016reuslt")
 hstack.Add(gg)
-#hstack.Add(qq)
+hstack.Add(qq)
 hstack.Add(Sim)
 hstack.Draw("same histo")
 #Sim.Draw("same histo")
