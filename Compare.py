@@ -5,15 +5,27 @@ from array import array
 ROOT.gStyle.SetOptStat(False)
 
 # input file and get tree
-ggTozz = ROOT.TChain("passedEvents")
-ggTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/GluGluToContinToZZ*.root")
+ggTozz2e2u = ROOT.TChain("passedEvents")
+ggTozz2e2u.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/GluGluToContinToZZTo2e2mu_FL01.root")
+
+ggTozz2u2t = ROOT.TChain("passedEvents")
+ggTozz2u2t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/GluGluToContinToZZTo2mu2tau_FL02.root")
+
+ggTozz4e = ROOT.TChain("passedEvents")
+ggTozz4e.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/GluGluToContinToZZTo4e_FL01.root")
+
+ggTozz4u = ROOT.TChain("passedEvents")
+ggTozz4u.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/GluGluToContinToZZTo4mu_FL02.root")
+
+ggTozz4t = ROOT.TChain("passedEvents")
+ggTozz4t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/GluGluToContinToZZTo4tau_FL01.root")
 
 qqTozz = ROOT.TChain("passedEvents")
 qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL02.root")
-qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL03.root")
+
 
 qqTozz0 = ROOT.TChain("passedEvents")
-qqTozz0.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL04.root")
+qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL03.root")
 
 DataSim_gg = ROOT.TChain("passedEvents")
 DataSim_gg.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/GluGluHToZZTo4L*.root")
@@ -39,9 +51,25 @@ t = Signal.Get('passedEvents')
 # book histogram and canvas
 c = ROOT.TCanvas()
 
-gg = ROOT.TH1D("gg->zz","Backgrund(2016)",50,70,170)
-gg.SetFillColor(ROOT.kBlue)
-gg.GetYaxis().SetTitle("Events / 2 GeV")
+gg2e2u = ROOT.TH1D("gg->ggTozz2e2u","Backgrund(2016)",50,70,170)
+gg2e2u.SetFillColor(ROOT.kBlue)
+gg2e2u.GetYaxis().SetTitle("Events / 2 GeV")
+
+gg2u2t = ROOT.TH1D("gg->ggTozz2u2t","Backgrund(2016)",50,70,170)
+gg2u2t.SetFillColor(ROOT.kBlue)
+gg2u2t.GetYaxis().SetTitle("Events / 2 GeV")
+
+gg4e = ROOT.TH1D("gg->ggTozz4e","Backgrund(2016)",50,70,170)
+gg4e.SetFillColor(ROOT.kBlue)
+gg4e.GetYaxis().SetTitle("Events / 2 GeV")
+
+gg4u = ROOT.TH1D("gg->ggTozz4u","Backgrund(2016)",50,70,170)
+gg4u.SetFillColor(ROOT.kBlue)
+gg4u.GetYaxis().SetTitle("Events / 2 GeV")
+
+gg4t = ROOT.TH1D("gg->ggTozz4t","Backgrund(2016)",50,70,170)
+gg4t.SetFillColor(ROOT.kBlue)
+gg4t.GetYaxis().SetTitle("Events / 2 GeV")
 
 qq = ROOT.TH1D("qq->zz","Backgrund(2016)",50,70,170)
 qq.SetFillColor(7)
@@ -86,14 +114,26 @@ Data.SetLineWidth(1)
 #Data.SetStats(ROOT.kFALSE)
 
 #Loop over all the events and fill histogram
-for ievent,event in enumerate(ggTozz):
-    gg.Fill(event.H_FSR,35.9*1000*0.01434*event.weight/event.cross*event.k_gg)
+for ievent,event in enumerate(ggTozz2e2u):
+    gg2e2u.Fill(event.H_FSR,35.9*1000*event.weight*event.k_gg)
+
+for ievent,event in enumerate(ggTozz2u2t):
+    gg2u2t.Fill(event.H_FSR,35.9*1000*0.00319*event.weight*event.k_gg)
+
+for ievent,event in enumerate(ggTozz4e):
+    gg4e.Fill(event.H_FSR,35.9*1000*event.weight*event.k_gg)
+
+for ievent,event in enumerate(ggTozz4u):
+    gg4u.Fill(event.H_FSR,35.9*1000*event.weight*event.k_gg)
+
+for ievent,event in enumerate(ggTozz4t):
+    gg4t.Fill(event.H_FSR,35.9*1000*0.00159*event.weight*event.k_gg)
 
 for ievent,event in enumerate(qqTozz):
     qq.Fill(event.H_FSR,35.9*1000*event.weight*event.k_qq_qcd_pt*event.k_qq_ewk)
 
 for ievent,event in enumerate(qqTozz0):
-    qq0.Fill(event.H_FSR,35.9*1000*1.256*event.weight/event.cross*event.k_qq_qcd_pt*event.k_qq_ewk)
+    qq0.Fill(event.H_FSR,35.9*1000*event.weight*event.k_qq_qcd_pt*event.k_qq_ewk)
 
 for ievent,event in enumerate(DataSim_gg):
     Sim_gg.Fill(event.H_FSR,35.9*12.18*event.weight/event.cross)
@@ -140,6 +180,15 @@ Sim.Add(Sim,Sim_WplusH)
 Sim.Add(Sim,Sim_WminH)
 Sim.Add(Sim,Sim_ttH)
 
+ggSum = ROOT.TH1D("qqSum","Backgrund(2016)",50,70,170)
+ggSum.SetFillColor(ROOT.kBlue)
+ggSum.Sim.Sumw2()
+ggSum.Add(gg2e2u,gg2u2t)
+ggSum.Add(ggSum,gg4e)
+ggSum.Add(ggSum,gg4u)
+ggSum.Add(ggSum,gg4t)
+
+
 #qqSum = ROOT.TH1D("qqSum","Backgrund(2016)",50,70,170)
 #qqSum.SetFillColor(7)
 #qqSum.Sumw2()
@@ -168,7 +217,7 @@ Data.Draw("E1")
 #hstack.Draw("same histo")
 Sim.Draw("same histo")
 qq.Draw("same histo")
-gg.Draw("same histo")
+ggSum.Draw("same histo")
 leg.Draw()
 Data.Draw("same E1")
 c.SaveAs("All.png")
