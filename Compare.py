@@ -17,6 +17,18 @@ DataSim_gg.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/GluGluHToZ
 DataSim_qq = ROOT.TChain("passedEvents")
 DataSim_qq.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC2/VBF_HToZZTo4L*.root")
 
+DataSim_WplusH = ROOT.TChain("passedEvents")
+DataSim_WplusH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC2/WplusH*.root")
+
+DataSim_WminH = ROOT.TChain("passedEvents")
+DataSim_WminH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC2/WminusH*.root")
+
+DataSim_ZH = ROOT.TChain("passedEvents")
+DataSim_ZH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC2/ZH_HToZZ*.root")
+
+#DataSim_ttH = ROOT.TChain("passedEvents")
+#DataSim_ttH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC2/ZH_HToZZ*.root")
+
 Signal = ROOT.TFile('/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/2016_allsignal_new.root')
 t = Signal.Get('passedEvents')
 
@@ -39,6 +51,19 @@ Sim_qq = ROOT.TH1D("Sim_qq","Backgrund(2016)",50,70,170)
 Sim_qq.SetFillColor(ROOT.kRed)
 Sim_qq.GetYaxis().SetTitle("Events / 2 GeV")
 
+Sim_WplusH = ROOT.TH1D("Sim_WplusH","Backgrund(2016)",50,70,170)
+Sim_WplusH.SetFillColor(ROOT.kRed)
+Sim_WplusH.GetYaxis().SetTitle("Events / 2 GeV")
+
+Sim_WminH = ROOT.TH1D("Sim_WminH","Backgrund(2016)",50,70,170)
+Sim_WminH.SetFillColor(ROOT.kRed)
+Sim_WminH.GetYaxis().SetTitle("Events / 2 GeV")
+
+Sim_ZH = ROOT.TH1D("Sim_ZH","Backgrund(2016)",50,70,170)
+Sim_ZH.SetFillColor(ROOT.kRed)
+Sim_ZH.GetYaxis().SetTitle("Events / 2 GeV")
+
+
 Data = ROOT.TH1D("Data","Data(2016)",50,70,170)
 Data.GetYaxis().SetTitle("Events / 2 GeV")
 Data.SetMarkerStyle(20)
@@ -59,7 +84,16 @@ for ievent,event in enumerate(DataSim_gg):
     Sim_gg.Fill(event.H_FSR,35.9*12.18*event.weight/event.cross)
 
 for ievent,event in enumerate(DataSim_qq):
-    Sim_qq.Fill(event.H_FSR,35.9*1.044*event.weight)
+    Sim_qq.Fill(event.H_FSR,35.9*1.044*event.weight/event.cross)
+
+for ievent,event in enumerate(DataSim_WplusH):
+    Sim_qq.Fill(event.H_FSR,35.9*0.232*event.weight/event.cross)
+
+for ievent,event in enumerate(DataSim_WminH):
+    Sim_qq.Fill(event.H_FSR,35.9*0.147*event.weight/event.cross)
+
+for ievent,event in enumerate(DataSim_ZH):
+    Sim_qq.Fill(event.H_FSR,35.9*0.668*event.weight/event.cross)
 
 for ievent,event in enumerate(t):
     Data.Fill(event.H_FSR)
@@ -78,6 +112,10 @@ Sim = ROOT.TH1D("Sim","Backgrund(2016)",50,70,170)
 Sim.SetFillColor(ROOT.kRed)
 Sim.Sumw2()
 Sim.Add(Sim_gg,Sim_qq)
+Sim.Add(Sim,Sim_ZH)
+Sim.Add(Sim,Sim_WplusH)
+Sim.Add(Sim,Sim_WminH)
+
 
 # set leg
 leg = ROOT.TLegend(0.7, 0.7, 0.85, 0.85)
