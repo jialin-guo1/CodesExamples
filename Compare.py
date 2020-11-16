@@ -79,10 +79,10 @@ Data.SetLineWidth(1)
 
 #Loop over all the events and fill histogram
 for ievent,event in enumerate(ggTozz):
-    gg.Fill(event.H_FSR,35.9*1000*0.01434*event.weight/event.cross)
+    gg.Fill(event.H_FSR,35.9*1000*0.01434*event.weight/event.cross*event.k_gg)
 
 for ievent,event in enumerate(qqTozz):
-    qq.Fill(event.H_FSR,35.9*1000*1.256*event.weight/event.cross)
+    qq.Fill(event.H_FSR,35.9*1000*1.256*event.weight/event.cross*event.k_qq_qcd_pt*event.k_qq_ewk)
 
 for ievent,event in enumerate(DataSim_gg):
     Sim_gg.Fill(event.H_FSR,35.9*12.18*event.weight/event.cross)
