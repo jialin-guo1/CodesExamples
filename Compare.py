@@ -6,26 +6,28 @@ ROOT.gStyle.SetOptStat(False)
 
 # input file and get tree
 ggTozz2e2u = ROOT.TChain("passedEvents")
-ggTozz2e2u.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/GluGluToContinToZZTo2e2mu_FL01.root")
+ggTozz2e2u.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluToContinToZZTo2e2mu_FL01.root")
 
 ggTozz2u2t = ROOT.TChain("passedEvents")
-ggTozz2u2t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/GluGluToContinToZZTo2mu2tau_FL02.root")
+ggTozz2u2t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluToContinToZZTo2mu2tau_FL02.root")
+
+ggTozz2e2t = ROOT.TChain("passedEvents")
+ggTozz2e2t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluToContinToZZTo2e2tau_FL01.root")
 
 ggTozz4e = ROOT.TChain("passedEvents")
-ggTozz4e.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/GluGluToContinToZZTo4e_FL01.root")
+ggTozz4e.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluToContinToZZTo4e_FL01.root")
 
 ggTozz4u = ROOT.TChain("passedEvents")
-ggTozz4u.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/GluGluToContinToZZTo4mu_FL02.root")
+ggTozz4u.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluToContinToZZTo4mu_FL02.root")
 
 ggTozz4t = ROOT.TChain("passedEvents")
-ggTozz4t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/GluGluToContinToZZTo4tau_FL01.root")
+ggTozz4t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluToContinToZZTo4tau_FL01.root")
 
 qqTozz = ROOT.TChain("passedEvents")
 qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL04.root")
 
-
 qqTozz0 = ROOT.TChain("passedEvents")
-qqTozz0.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL03.root")
+qqTozz0.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL02.root")
 
 DataSim_gg = ROOT.TChain("passedEvents")
 DataSim_gg.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/GluGluHToZZTo4L*.root")
@@ -58,6 +60,10 @@ gg2e2u.GetYaxis().SetTitle("Events / 2 GeV")
 gg2u2t = ROOT.TH1D("gg->ggTozz2u2t","Backgrund(2016)",50,70,170)
 gg2u2t.SetFillColor(ROOT.kBlue)
 gg2u2t.GetYaxis().SetTitle("Events / 2 GeV")
+
+gg2e2t = ROOT.TH1D("gg->ggTozz2e2t","Backgrund(2016)",50,70,170)
+gg2e2t.SetFillColor(ROOT.kBlue)
+gg2e2t.GetYaxis().SetTitle("Events / 2 GeV")
 
 gg4e = ROOT.TH1D("gg->ggTozz4e","Backgrund(2016)",50,70,170)
 gg4e.SetFillColor(ROOT.kBlue)
@@ -117,6 +123,9 @@ Data.SetLineWidth(1)
 for ievent,event in enumerate(ggTozz2e2u):
     gg2e2u.Fill(event.H_FSR,35.9*1000*event.weight*event.k_gg)
 
+for ievent,event in enumerate(ggTozz2e2t):
+    gg2e2t.Fill(event.H_FSR,35.9*1000*0.00319*event.weight*event.k_gg)
+
 for ievent,event in enumerate(ggTozz2u2t):
     gg2u2t.Fill(event.H_FSR,35.9*1000*0.00319*event.weight*event.k_gg)
 
@@ -130,10 +139,10 @@ for ievent,event in enumerate(ggTozz4t):
     gg4t.Fill(event.H_FSR,35.9*1000*0.00159*event.weight*event.k_gg)
 
 for ievent,event in enumerate(qqTozz):
-    qq.Fill(event.H_FSR,35.9*1000*event.weight*event.k_qq_qcd_pt*event.k_qq_ewk)
+    qq.Fill(event.H_FSR,35.9*1000*event.weight*event.k_qq_qcd_M*event.k_qq_ewk)
 
 for ievent,event in enumerate(qqTozz0):
-    qq0.Fill(event.H_FSR,35.9*1000*event.weight*event.k_qq_qcd_pt*event.k_qq_ewk)
+    qq0.Fill(event.H_FSR,35.9*1000*event.weight*event.k_qq_qcd_M*event.k_qq_ewk)
 
 for ievent,event in enumerate(DataSim_gg):
     Sim_gg.Fill(event.H_FSR,35.9*12.18*event.weight/event.cross)
@@ -184,6 +193,7 @@ ggSum = ROOT.TH1D("qqSum","Backgrund(2016)",50,70,170)
 ggSum.SetFillColor(ROOT.kBlue)
 ggSum.Sumw2()
 ggSum.Add(gg2e2u,gg2u2t)
+ggSum.Add(ggSum,gg2e2t)
 ggSum.Add(ggSum,gg4e)
 ggSum.Add(ggSum,gg4u)
 ggSum.Add(ggSum,gg4t)
@@ -216,7 +226,7 @@ Data.Draw("E1")
 #hstack.Add(Sim)
 #hstack.Draw("same histo")
 Sim.Draw("same histo")
-qq.Draw("same histo")
+#qq.Draw("same histo")
 ggSum.Draw("same histo")
 leg.Draw()
 Data.Draw("same E1")

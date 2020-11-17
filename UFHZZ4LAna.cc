@@ -1648,6 +1648,323 @@ void UFHZZ4LAna::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup
               lep_filtersMatched.push_back(filtersMatched);
             }
           }
+
+          // GEN matching
+          if(isMC){
+            if (verbose) cout<<"begin gen matching"<<endl;
+            // for each reco lepton find the nearest gen lepton with same ID
+            for(unsigned int i = 0; i < lep_pt.size(); i++){
+
+              double minDr=9999.0;
+
+              TLorentzVector reco, gen;
+              reco.SetPtEtaPhiM(lep_pt[i],lep_eta[i],lep_phi[i],lep_mass[i]);
+
+              for (unsigned int j = 0; j < GENlep_id.size(); j++) {
+                gen.SetPtEtaPhiM(GENlep_pt[j],GENlep_eta[j],GENlep_phi[j],GENlep_mass[j]);
+                double thisDr = deltaR(reco.Eta(),reco.Phi(),gen.Eta(),gen.Phi());
+
+                if (thisDr<minDr && thisDr<0.5) {
+                  lep_genindex[i]=j;
+                  minDr=thisDr;
+                }
+              } // all gen leptons
+            } // all reco leptons
+
+            // for each reco lepton find the nearest gen particle and save its ID and mothers
+            for(unsigned int i = 0; i < lep_pt.size(); i++){
+              double minDr=9999.0;
+
+              TLorentzVector reco;
+              reco.SetPtEtaPhiM(lep_pt[i],lep_eta[i],lep_phi[i],lep_mass[i]);
+
+              reco::GenParticleCollection::const_iterator genPart;
+              int j = -1;
+              int tmpPdgId = 0;
+              int tmpMomId = 0;
+              int tmpMomMomId = 0;
+              for(genPart = prunedgenParticles->begin(); genPart != prunedgenParticles->end(); genPart++){
+                j++;
+                double thisDr = deltaR(reco.Eta(),reco.Phi(),genPart->eta(),genPart->phi());
+
+                if (thisDr<minDr && thisDr<0.3) {
+                  tmpPdgId=genPart->pdgId();
+                  tmpMomId=genAna.MotherID(&prunedgenParticles->at(j));
+                  tmpMomMomId=genAna.MotherMotherID(&prunedgenParticles->at(j));
+
+                  minDr=thisDr;
+                }
+              } // all gen lheParticles
+              // storing the matches
+              lep_matchedR03_PdgId.push_back(tmpPdgId);
+              lep_matchedR03_MomId.push_back(tmpMomId);
+              lep_matchedR03_MomMomId.push_back(tmpMomMomId);
+
+            } //all reco leptons
+            if (verbose) {cout<<"finished gen matching"<<endl;}
+          }// is MC
+
+          unsigned int Nleptons = lep_pt.size();
+
+          // FSR Photons
+          if(doFsrRecovery) {
+
+            if (verbose) cout<<"checking "<<photonsForFsr->size()<<" fsr photon candidates"<<endl;
+
+            // try to find an fsr photon for each lepton
+            for (unsigned int i=0; i<Nleptons; i++){
+
+              TLorentzVector thisLep;
+              thisLep.SetPtEtaPhiM(lep_pt[i],lep_eta[i],lep_phi[i],lep_mass[i]);
+
+              double minDrOEt2 = 999.0; double selectedPhotonIso=9999.0; double selectedPhotonDr=9999.0;
+              bool selected=false; pat::PFParticle selectedPhoton;
+              for(edm::View<pat::PFParticle>::const_iterator phot=photonsForFsr->begin(); phot!=photonsForFsr->end(); ++phot) {
+
+                // preselection
+                if (fabs(phot->eta()) > 2.4) continue;
+                if (phot->pt()<2.0) continue;
+                double fsrDr = deltaR(thisLep.Eta(), thisLep.Phi(), phot->eta(), phot->phi());
+                if (fsrDr>0.5) continue;
+
+                // check super cluster veto against all electrons for each photon
+                // at the same time check that this is the closest lepton for this photon
+                bool matched=false;
+                bool closest=true;
+
+                for (unsigned int j=0; j<Nleptons; j++){
+
+                  TLorentzVector otherLep;
+                  otherLep.SetPtEtaPhiM(lep_pt[j],lep_eta[j],lep_phi[j],lep_mass[j]);
+                  double fsrDrOther = deltaR(otherLep.Eta(), otherLep.Phi(), phot->eta(), phot->phi());
+                  if (j!=i && fsrDrOther<fsrDr) {closest=false;}
+
+                  if ( abs(lep_id[(int)j])==11) {
+                    for(size_t ecand = 0; ecand < recoElectrons[lep_ptindex[j]].associatedPackedPFCandidates().size(); ecand++){
+
+                      double ecandpt = recoElectrons[lep_ptindex[j]].associatedPackedPFCandidates()[ecand]->pt();
+                      double ecandeta = recoElectrons[lep_ptindex[j]].associatedPackedPFCandidates()[ecand]->eta();
+                      double ecandphi = recoElectrons[lep_ptindex[j]].associatedPackedPFCandidates()[ecand]->phi();
+                      if (abs(ecandpt-phot->pt())<1e-10 && abs(ecandeta-phot->eta())<1e-10 && abs(ecandphi-phot->phi())<1e-10) matched=true;
+
+                    }
+                  }
+                }
+
+                if (matched) continue;
+                if (!closest) continue; // if closest==False then continue
+
+                // comput iso, dR/ET^2
+                double photoniso = helper.photonPfIso03(*phot,pfCands)/phot->pt();
+                double fsrDrOEt2 = fsrDr/(phot->pt()*phot->pt());
+
+                //fill all fsr photons before iso, dR/Et^2 cuts
+                allfsrPhotons_dR.push_back(fsrDr);
+                allfsrPhotons_iso.push_back(photoniso);
+                allfsrPhotons_pt.push_back(phot->pt());
+
+                // require photon iso, dR/Et^2
+                if (photoniso>1.8) continue;
+                if (fsrDrOEt2>0.012) continue;
+
+                // this photon is now a good one, check if it is the best one
+
+                if ( verbose) cout<<"fsr photon cand, pt: "<<phot->pt()<<" eta: "<<phot->eta()<<" phi: "<<phot->phi()
+                                     //<<" isoCHPUNoPU: "<<phot->userFloat("fsrPhotonPFIsoChHadPUNoPU03pt02")
+                                     //<<" isoCHPUNoPU: "<<phot->userFloat("fsrPhotonPFIsoChHadPUNoPU03pt02")
+                                     <<" photoniso: "<<photoniso<<" DrOEt2: "<< fsrDrOEt2 <<endl;
+                if( fsrDrOEt2 < minDrOEt2 ){
+                    selected = true;
+                    selectedPhoton=(*phot);
+                    selectedPhotonIso=photoniso;
+                    selectedPhotonDr=fsrDr;
+                    minDrOEt2 = fsrDrOEt2;
+                    if (verbose) cout<<"****selected fsr: "<<i<<endl;
+                    if (verbose) cout<<"photoniso: "<<photoniso<<" fsr dR over Et^2: "<<fsrDrOEt2<<" fsr dR: "<<fsrDr<<endl;
+
+                  }
+              }// all photons
+              if(selected){
+                nFSRPhotons++;
+                fsrPhotons.push_back(selectedPhoton);
+                fsrPhotons_pt.push_back(selectedPhoton.pt());
+                double perr = PFEnergyResolution().getEnergyResolutionEm(selectedPhoton.energy(), selectedPhoton.eta());
+                double pterr = perr*selectedPhoton.pt()/selectedPhoton.p();
+                fsrPhotons_pterr.push_back(pterr);
+                fsrPhotons_eta.push_back(selectedPhoton.eta());
+                fsrPhotons_phi.push_back(selectedPhoton.phi());
+                fsrPhotons_lepindex.push_back((int)i);
+                fsrPhotons_dR.push_back(selectedPhotonDr);
+                fsrPhotons_iso.push_back(selectedPhotonIso);
+                TLorentzVector phofsr;
+                phofsr.SetPtEtaPhiM(selectedPhoton.pt(),selectedPhoton.eta(),selectedPhoton.phi(),0.0);
+                TLorentzVector lepfsr;
+                lepfsr = thisLep+phofsr;
+                lepFSR_pt[i] = lepfsr.Pt();
+                lepFSR_eta[i] = lepfsr.Eta();
+                lepFSR_phi[i] = lepfsr.Phi();
+                lepFSR_mass[i] = lepfsr.M();
+
+                fsrmap[i] = phofsr;
+                if (verbose) cout<<"****selected fsr: "<<i<<endl;
+                if (verbose) cout<<"phofsr pt: "<<phofsr.Pt()<<" eta: "<<phofsr.Eta()<<" phi: "<<phofsr.Phi()<<" mass: "<<phofsr.M()<<endl;
+                if (verbose) cout<<"lep pt: "<<thisLep.Pt()<<" eta: "<<thisLep.Eta()<<" phi: "<<thisLep.Phi()<<" mass: "<<thisLep.M()<<endl;
+                if (verbose) cout<<"lep+fsr pt: "<<lepFSR_pt[i]<<" eta: "<<lepFSR_eta[i]<<" phi: "<<lepFSR_phi[i]<<" mass: "<<lepfsr.M()<<endl;
+
+              }
+            } // all leptons
+
+            // subtract selected photons from all leptons isolations
+            for (unsigned int i=0; i<Nleptons; i++){
+
+              TLorentzVector lep_nofsr;
+              lep_nofsr.SetPtEtaPhiM(lep_pt[i],lep_eta[i],lep_phi[i],lep_mass[i]);
+
+              double isoFSR=0.0;
+              for (unsigned int j=0; j<fsrPhotons.size(); j++) {
+                double fsrDr = deltaR(lep_nofsr.Eta(),lep_nofsr.Phi(),fsrPhotons[j].eta(),fsrPhotons[j].phi());
+                bool isoVeto=true;
+                if (abs(lep_id[i])==13 && fsrDr>0.01) isoVeto=false;
+                if (abs(lep_id[i])==11 && (abs(recoElectrons[lep_ptindex[i]].superCluster()->eta())<1.479 || fsrDr>0.08)) isoVeto=false;
+                if (fsrDr<((abs(lep_id[i])==11)?isoConeSizeEl:isoConeSizeMu) && !isoVeto) isoFSR += fsrPhotons[j].pt();
+              }
+
+              double RelIsoNoFSR = (lep_isoCH[i]+std::max(lep_isoNH[i]+lep_isoPhot[i]-lep_isoPUcorr[i]-isoFSR,0.0))/lep_nofsr.Pt();
+              lep_RelIsoNoFSR[i] = RelIsoNoFSR;
+              if (verbose) cout<<"lep pt: "<<lep_nofsr.Pt()<<" eta: "<<lep_nofsr.Eta()<<" phi: "<<lep_nofsr.Phi()<<" RelIsoNoFSR: "<<RelIsoNoFSR<<" lep mva: "<<lep_mva[i]<<" tightId? "<<lep_tightId[i]<<endl;
+            } //doFsrRecovery
+
+            // count tight ID iso leptons
+            uint ntight=0;
+            for (unsigned int i=0; i<Nleptons; i++){
+              if (abs(lep_id[i])==11 && lep_RelIsoNoFSR[i]<isoCutEl && lep_tightId[i]==1) ntight+=1;
+              if (abs(lep_id[i])==13 && lep_RelIsoNoFSR[i]<isoCutMu && lep_tightId[i]==1) ntight+=1;
+            }
+
+            if ( ntight >= (uint)skimTightLeptons ){
+
+              // Fake Rate Study (Z+1L Control Region)
+              if (verbose) cout<<"begin Z+1L fake rate study"<<endl;
+              // Z+1L selection
+              findZ1LCandidate(iEvent);
+              if (foundZ1LCandidate){
+                passedZ4lZ1LSelection = true;
+                if (passedTrig) passedZ1LSelection = true;
+              }
+              if (verbose) {cout<<"finished Z+1L fake rate study"<<endl;}
+
+              // creat vectors for selected objects
+              vector<pat::Muon> selectedMuons;
+              vector<pat::Electron> selectedElectrons;
+
+              if (verbose) cout<<"begin looking for higgs candidate"<<endl;
+              findHiggsCandidate(selectedMuons,selectedElectrons,iEvent);
+              if (verbose) {cout<<"found higgs candidate? "<<foundHiggsCandidate<<endl; }
+
+              // Jets
+              if (verbose) cout<<"begin filling jet candidates"<<endl;
+
+              vector<pat::Jet> goodJets;
+              vector<float> patJetQGTagger, patJetaxis2, patJetptD;
+              vector<float> goodJetQGTagger, goodJetaxis2, goodJetptD;
+              vector<int> patJetmult, goodJetmult;
+
+              for(auto jet = jets->begin();  jet != jets->end(); ++jet){
+                edm::RefToBase<pat::Jet> jetRef(edm::Ref<edm::View<pat::Jet> >(jets, jet - jets->begin()));
+                float qgLikelihood = (*qgHandle)[jetRef];
+                float axis2 = (*axis2Handle)[jetRef];
+                float ptD = (*ptDHandle)[jetRef];
+                int mult = (*multHandle)[jetRef];
+                patJetQGTagger.push_back(qgLikelihood);
+                patJetaxis2.push_back(axis2);
+                patJetmult.push_back(mult);
+                patJetptD.push_back(ptD);
+              }
+
+              for(unsigned int i = 0; i < jets->size(); ++i){
+
+                const pat::Jet & jet = jets->at(i);
+
+                //JetID ID
+                if (verbose) cout<<"checking jetid..."<<endl;
+                float jpumva=0.;
+                bool passPU;
+                if (doJEC && (year==2017 || year==2018)){
+                  passPU = bool(jet.userInt("pileupJetIdUpdated:fullId") & (1 << 0));
+                  jpumva=jet.userFloat("pileupJetIdUpdated:fullDiscriminant");
+                }else{
+                  passPU = bool(jet.userInt("pileupJetId:fullId") & (1 << 0));
+                  jpumva=jet.userFloat("pileupJetId:fullDiscriminant");
+                }
+                if (verbose) cout<< " jet pu mva  "<<jpumva <<endl;
+                if (verbose) cout<<"pt: "<<jet.pt()<<" eta: "<<jet.eta()<<" passPU: "<<passPU
+                                 <<" jetid: "<<jetHelper.patjetID(jet,year)<<endl;
+                if( jetHelper.patjetID(jet,year)>=jetIDLevel ){
+
+                  if (verbose) cout<<"passed pf jet id and pu jet id"<<endl;
+
+                  if(fabs(jet.eta()) < jeteta_cut){
+                    if (verbose) cout<<"adding pu jet scale factors..."<<endl;
+                    bool dropit=false;
+                    if (abs(jet.eta())>3.0 && isMC){
+                      TRandom3 rand;
+                      rand.SetSeed(abs(static_cast<int>(sin(jet.phi())*100000)));
+                      float coin = rand.Uniform(1.);
+                      if (jet.pt()>=20.0 && jet.pt()<36.0 && coin>1.0) dropit=true;
+                      if (jet.pt()>=36.0 && jet.pt()<50.0 && coin>1.0) dropit=true;
+                      if (jet.pt()>=50.0 && coin>1.0) dropit=true;
+                    }
+
+                    if (!dropit){
+                      if (verbose) cout<<"adding jet candidate, pt: "<<jet.pt()<<" eta: "<<jet.eta()<<endl;
+                      goodJets.push_back(jet);
+                      goodJetQGTagger.push_back(patJetQGTagger[i]);
+                      goodJetaxis2.push_back(patJetaxis2[i]);
+                      goodJetptD.push_back(patJetptD[i]);
+                      goodJetmult.push_back(patJetmult[i]);
+                    }// pu jet scale factor
+                  } // pass loose pt cut
+                } // pass loose pf jet id and pu jet id
+              }// all jets
+
+              vector<pat::Jet> selectedMergedJets;
+
+              if( foundHiggsCandidate ){
+
+                for(unsigned int i = 0; i<4;i++){
+
+                  int index = lep_Hindex[i];
+                  if(fsrmap[index].Pt()!=0){
+                    if (verbose) cout<<"find a fsr photon for "<<i<<" th Higgs lepton"<<endl;
+                    selectedFsrMap[i] = fsrmap[index];
+                  }
+                }
+
+                if (verbose) cout<<"storing H_p4_noFSR"<<endl;
+                math::XYZTLorentzVector tmpHVec;
+                if (verbose) cout<<"selectedMuons "<<selectedMuons.size()<<" selectedElectrons "<<selectedElectrons.size()<<endl;
+                if(RecoFourMuEvent){
+                  tmpHVec = selectedMuons[0].p4() + selectedMuons[1].p4() + selectedMuons[2].p4() + selectedMuons[3].p4();
+                  HVecNoFSR.SetPtEtaPhiM(tmpHVec.Pt(),tmpHVec.Eta(),tmpHVec.Phi(),tmpHVec.M());
+
+                  reco::Candidate *c1 = dynamic_cast<reco::Candidate* >(&selectedMuons[0]);
+                  selectedLeptons.push_back(c1);
+                  reco::Candidate *c2 = dynamic_cast<reco::Candidate* >(&selectedMuons[1]);
+                  selectedLeptons.push_back(c2);
+                  reco::Candidate *c3 = dynamic_cast<reco::Candidate* >(&selectedMuons[2]);
+                  selectedLeptons.push_back(c3);
+                  reco::Candidate *c4 = dynamic_cast<reco::Candidate* >(&selectedMuons[3]);
+                  selectedLeptons.push_back(c4);
+                }
+
+                else if(RecoFourEEvent){
+                  tmpHVec = selectedElectrons[0].p4() + selectedElectrons[1].p4() + selectedElectrons[2].p4() + selectedElectrons[3].p4();
+                  HVecNoFSR.SetPtEtaPhiM(tmpHVec.Pt(),tmpHVec.Eta(),tmpHVec.Phi(),tmpHVec.M());
+                        
+                }
+              }
+            }
+          }
         }
       }
 
