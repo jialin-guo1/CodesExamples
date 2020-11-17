@@ -190,6 +190,7 @@ Sim.Add(Sim,Sim_WplusH)
 Sim.Add(Sim,Sim_WminH)
 Sim.Add(Sim,Sim_ttH)
 
+Data.Draw("E1")
 Sim.Draw("hito")
 Data.Draw("same E1")
 c.SaveAs("Sum.png")
