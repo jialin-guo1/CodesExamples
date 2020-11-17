@@ -25,7 +25,8 @@ ggTozz4t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluToCont
 
 qqTozz = ROOT.TChain("passedEvents")
 #qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL04.root")
-qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL02.root")
+#qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL02.root")
+qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/ZZTo4L_FLALL.root")
 
 qqTozz0 = ROOT.TChain("passedEvents")
 qqTozz0.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL02.root")
@@ -231,8 +232,8 @@ leg.SetLineColor(10)
 #set histo and drew
 Data.Draw("E1")
 hstack = ROOT.THStack("hstack","2016reuslt")
-#hstack.Add(ggSum)
-#hstack.Add(qq)
+hstack.Add(ggSum)
+hstack.Add(qq)
 #hstack.Add(Sim)
 hstack.Add(Sim_gg)
 hstack.Add(Sim_qq)
