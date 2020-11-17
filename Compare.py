@@ -146,7 +146,7 @@ for ievent,event in enumerate(qqTozz0):
     qq0.Fill(event.H_FSR,35.9*1000*event.weight*event.k_qq_qcd_M*event.k_qq_ewk)
 
 for ievent,event in enumerate(DataSim_gg):
-    Sim_gg.Fill(event.H_FSR,35.9*12.18*event.weight/event.cross)
+    Sim_gg.Fill(event.H_FSR,35.9*12.31*event.weight/event.cross)
 
 for ievent,event in enumerate(DataSim_qq):
     Sim_qq.Fill(event.H_FSR,35.9*1.044*event.weight/event.cross)
