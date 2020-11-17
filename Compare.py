@@ -123,6 +123,7 @@ Data.SetLineWidth(1)
 #Loop over all the events and fill histogram
 for ievent,event in enumerate(ggTozz2e2u):
     gg2e2u.Fill(event.H_FSR,35.9*1000*event.weight*event.k_gg)
+gg2e2u.Draw("histo")
 
 for ievent,event in enumerate(ggTozz2e2t):
     gg2e2t.Fill(event.H_FSR,35.9*1000*0.00319*event.weight*event.k_gg)
@@ -226,14 +227,14 @@ leg.SetLineColor(10)
 
 #set histo and drew
 Data.Draw("E1")
-#hstack = ROOT.THStack("hstack","2016reuslt")
-#hstack.Add(gg)
-#hstack.Add(qq)
-#hstack.Add(Sim)
-#hstack.Draw("same histo")
-Sim.Draw("same histo")
-qq.Draw("same histo")
-ggSum.Draw("same histo")
+hstack = ROOT.THStack("hstack","2016reuslt")
+hstack.Add(gg)
+hstack.Add(qq)
+hstack.Add(ggSim)
+hstack.Draw("same histo")
+#Sim.Draw("same histo")
+#qq.Draw("same histo")
+#ggSum.Draw("same histo")
 leg.Draw()
 Data.Draw("same E1")
 c.SaveAs("All.png")
