@@ -175,7 +175,7 @@ for ievent,event in enumerate(DataSim_ttH):
 for ievent,event in enumerate(t):
     Data.Fill(event.H_FSR)
     MassZX = event.lep_RelIsoNoFSR1+event.lep_RelIsoNoFSR2+event.lep_RelIsoNoFSR3+event.lep_RelIsoNoFSR4
-    print MassZX
+#    print MassZX
     ZX.Fill(MassZX)
 
 ZX.Draw()
