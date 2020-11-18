@@ -22,14 +22,22 @@ ZX4 = ROOT.TH1D("ZX4","ZX4",10,0.3,1)
 ZX4.GetYaxis().SetTitle("Events / 2 GeV")
 ZX4.SetLineColor(7)
 
-for ievent,event in enumerate(t):
-    ZX1.Fill(event.lep_RelIsoNoFSR1)
-    ZX2.Fill(event.lep_RelIsoNoFSR2)
-    ZX3.Fill(event.lep_RelIsoNoFSR3)
-    ZX4.Fill(event.lep_RelIsoNoFSR4)
+nZX = ROOT.TH1D("nZX","nZX",10,0,3)
 
-ZX1.Draw()
-ZX2.Draw("same")
-ZX3.Draw("same")
-ZX4.Draw("same")
-c.SaveAs("ZX01.png")
+for ievent,event in enumerate(t):
+    if(not event.passedZXCRSelection):
+        nZX.Fill(nZXCRFailedLeptons)
+
+#    ZX1.Fill(event.lep_RelIsoNoFSR1)
+#    ZX2.Fill(event.lep_RelIsoNoFSR2)
+#    ZX3.Fill(event.lep_RelIsoNoFSR3)
+#    ZX4.Fill(event.lep_RelIsoNoFSR4)
+
+#ZX1.Draw()
+#ZX2.Draw("same")
+#ZX3.Draw("same")
+#ZX4.Draw("same")
+#c.SaveAs("ZX01.png")
+
+nZX.Draw()
+c.SaveAs("passedZXCR.png")
