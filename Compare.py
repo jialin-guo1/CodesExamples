@@ -49,12 +49,15 @@ DataSim_ZH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/ZH_HToZZ*.
 DataSim_ttH = ROOT.TChain("passedEvents")
 DataSim_ttH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/ZH_HToZZ*.root")
 
-Signal = ROOT.TFile('/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/2016_allsignal_new.root')
-t = Signal.Get('passedEvents')
+#Signal = ROOT.TFile('/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/2016_allsignal_new.root')
+#t = Signal.Get('passedEvents')
+t = ROOT.TChain("passedEvents")
+t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/2016_allsignal_new.root")
+t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/2017_noDuplicates_new.root")
+t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2018/2018_noDuplicates_new.root")
 
 # book histogram and canvas
 c = ROOT.TCanvas()
-
 gg2e2u = ROOT.TH1D("gg->ggTozz2e2u","Backgrund(2016)",50,70,170)
 gg2e2u.SetFillColor(ROOT.kBlue)
 gg2e2u.GetYaxis().SetTitle("Events / 2 GeV")
@@ -246,8 +249,8 @@ hstack.Draw("same histo")
 #qq.Draw("same histo")
 #ggSum.Draw("same histo")
 leg.Draw()
-Data.Draw("same E1")
-c.SaveAs("stack.png")
+Data.Draw("E1")
+c.SaveAs("RunIIdata.png")
 
 #qq.Draw("histo")
 #Data.Draw("same E1")
