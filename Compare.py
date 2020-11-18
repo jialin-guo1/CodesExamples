@@ -53,8 +53,8 @@ DataSim_ttH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/ZH_HToZZ*
 #t = Signal.Get('passedEvents')
 t = ROOT.TChain("passedEvents")
 t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/2016_noDuplicates_new.root")
-t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/2017_noDuplicates_new.root")
-t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2018/2018_noDuplicates_new.root")
+#t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/2017_noDuplicates_new.root")
+#t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2018/2018_noDuplicates_new.root")
 
 # book histogram and canvas
 c = ROOT.TCanvas()
