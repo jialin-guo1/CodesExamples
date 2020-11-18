@@ -126,7 +126,7 @@ Data.SetLineWidth(1)
 #Data.SetStats(ROOT.kFALSE)
 
 #Z+X
-ZX = ROOT.TH1D("ZX","ZX",50,70,170)
+ZX = ROOT.TH1D("ZX","ZX",10,0,1)
 ZX.GetYaxis().SetTitle("Events / 2 GeV")
 
 #Loop over all the events and fill histogram
