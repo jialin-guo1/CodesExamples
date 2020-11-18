@@ -126,8 +126,21 @@ Data.SetLineWidth(1)
 #Data.SetStats(ROOT.kFALSE)
 
 #Z+X
-ZX = ROOT.TH1D("ZX","ZX",10,0,1)
-ZX.GetYaxis().SetTitle("Events / 2 GeV")
+ZX1 = ROOT.TH1D("ZX1","ZX1",10,0,1)
+ZX1.GetYaxis().SetTitle("Events / 2 GeV")
+ZX1.SetLineColor(ROOT.kRed)
+
+ZX2 = ROOT.TH1D("ZX2","ZX2",10,0,1)
+ZX2.GetYaxis().SetTitle("Events / 2 GeV")
+ZX2.SetLineColor(ROOT.kBlue)
+
+ZX3 = ROOT.TH1D("ZX3","ZX3",10,0,1)
+ZX3.GetYaxis().SetTitle("Events / 2 GeV")
+ZX3.SetLineColor(ROOT.kBlack)
+
+ZX4 = ROOT.TH1D("ZX4","ZX4",10,0,1)
+ZX4.GetYaxis().SetTitle("Events / 2 GeV")
+ZX4.SetLineColor(7)
 
 #Loop over all the events and fill histogram
 for ievent,event in enumerate(ggTozz2e2u):
@@ -174,11 +187,15 @@ for ievent,event in enumerate(DataSim_ttH):
 
 for ievent,event in enumerate(t):
     Data.Fill(event.H_FSR)
-    MassZX = event.lep_RelIsoNoFSR1+event.lep_RelIsoNoFSR2+event.lep_RelIsoNoFSR3+event.lep_RelIsoNoFSR4
-#    print MassZX
-    ZX.Fill(MassZX)
+    ZX1.Fill(event.lep_RelIsoNoFSR1)
+    ZX2.Fill(event.lep_RelIsoNoFSR2)
+    ZX3.Fill(event.lep_RelIsoNoFSR3)
+    ZX4.Fill(event.lep_RelIsoNoFSR4)
 
-ZX.Draw()
+ZX1.Draw()
+ZX2.Draw("same")
+ZX3.Draw("same")
+ZX4.Draw("same")
 c.SaveAs("ZX.png")
 
 
