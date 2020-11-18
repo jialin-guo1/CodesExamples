@@ -28,8 +28,8 @@ qqTozz = ROOT.TChain("passedEvents")
 #qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL02.root")
 qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/ZZTo4L_FLALL.root")
 
-qqTozz0 = ROOT.TChain("passedEvents")
-qqTozz0.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL02.root")
+#qqTozz0 = ROOT.TChain("passedEvents")
+#qqTozz0.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL02.root")
 
 DataSim_gg = ROOT.TChain("passedEvents")
 DataSim_gg.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluHToZZTo4L*.root")
@@ -41,7 +41,7 @@ DataSim_WplusH = ROOT.TChain("passedEvents")
 DataSim_WplusH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/WplusH*.root")
 
 DataSim_WminH = ROOT.TChain("passedEvents")
-DataSim_WminH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC3/WminusH*.root")
+DataSim_WminH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/WminusH*.root")
 
 DataSim_ZH = ROOT.TChain("passedEvents")
 DataSim_ZH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/ZH_HToZZ*.root")
@@ -148,8 +148,8 @@ for ievent,event in enumerate(ggTozz4t):
 for ievent,event in enumerate(qqTozz):
     qq.Fill(event.H_FSR,35.9*1000*event.weight*event.k_qq_qcd_M*event.k_qq_ewk)
 
-for ievent,event in enumerate(qqTozz0):
-    qq0.Fill(event.H_FSR,35.9*1000*event.weight*event.k_qq_qcd_M*event.k_qq_ewk)
+#for ievent,event in enumerate(qqTozz0):
+#    qq0.Fill(event.H_FSR,35.9*1000*event.weight*event.k_qq_qcd_M*event.k_qq_ewk)
 
 for ievent,event in enumerate(DataSim_gg):
     Sim_gg.Fill(event.H_FSR,35.9*12.31*event.weight/event.cross)
