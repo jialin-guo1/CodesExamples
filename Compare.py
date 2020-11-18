@@ -125,6 +125,10 @@ Data.SetLineColor(ROOT.kBlack)
 Data.SetLineWidth(1)
 #Data.SetStats(ROOT.kFALSE)
 
+#Z+X
+ZX = ROOT.TH1D("ZX","ZX",50,70,170)
+ZX.GetYaxis().SetTitle("Events / 2 GeV")
+
 #Loop over all the events and fill histogram
 for ievent,event in enumerate(ggTozz2e2u):
     gg2e2u.Fill(event.H_FSR,35.9*1000*event.weight*event.k_gg)
@@ -170,6 +174,11 @@ for ievent,event in enumerate(DataSim_ttH):
 
 for ievent,event in enumerate(t):
     Data.Fill(event.H_FSR)
+    MassZX = event.lep_RelIsoNoFSR1+event.lep_RelIsoNoFSR2+event.lep_RelIsoNoFSR3+event.lep_RelIsoNoFSR4
+    ZX.Fill(MassZX)
+
+ZX.Draw()
+ZX.SaveAs("ZX.png")
 
 
 print "number of ggHToZZ = " + str(Sim_gg.Integral())
