@@ -26,7 +26,7 @@ nZX = ROOT.TH1D("nZX","nZX",10,0,3)
 
 for ievent,event in enumerate(t):
     if(not event.passedZXCRSelection):
-        nZX.Fill(nZXCRFailedLeptons)
+        nZX.Fill(event.nZXCRFailedLeptons)
 
 #    ZX1.Fill(event.lep_RelIsoNoFSR1)
 #    ZX2.Fill(event.lep_RelIsoNoFSR2)
