@@ -23,7 +23,6 @@ ZX4.GetYaxis().SetTitle("Events / 2 GeV")
 ZX4.SetLineColor(7)
 
 for ievent,event in enumerate(t):
-    Data.Fill(event.H_FSR)
     ZX1.Fill(event.lep_RelIsoNoFSR1)
     ZX2.Fill(event.lep_RelIsoNoFSR2)
     ZX3.Fill(event.lep_RelIsoNoFSR3)
