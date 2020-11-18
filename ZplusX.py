@@ -24,7 +24,7 @@ c = ROOT.TCanvas()
 
 #nZX = ROOT.TH1D("nZX","nZX",10,0,3)
 
-dataR1 =ROOT.TH1D("dataR1","dataR1",50,70,170)
+dataR1 = ROOT.TH1D("dataR1","dataR1",50,70,170)
 dataR1.SetLineColor(ROOT.kRed)
 
 dataR2 =ROOT.TH1D("dataR2","dataR2",50,70,170)
@@ -58,7 +58,7 @@ for ievent,event in enumerate(t):
             l4FSR.SetPtEtaPhiM(event.lepFSR_pt[event.lep_Hindex[3]],event.lepFSR_eta[event.lep_Hindex[3]],event.lepFSR_phi[event.lep_Hindex[3]],event.lepFSR_mass[event.lep_Hindex[3]])
             H4massFSR = ROOT.TLorentzVector()
             H4massFSR = l1FSR+l2FSR+l3FSR+l4FSR
-            dataR2.Fill(H4massFSR.M()
+            dataR2.Fill(H4massFSR.M())
 
 
 dataR1.Draw()
