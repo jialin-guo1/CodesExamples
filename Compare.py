@@ -179,7 +179,7 @@ for ievent,event in enumerate(t):
     ZX.Fill(MassZX)
 
 ZX.Draw()
-ZX.SaveAs("ZX.png")
+c.SaveAs("ZX.png")
 
 
 print "number of ggHToZZ = " + str(Sim_gg.Integral())
