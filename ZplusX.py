@@ -1,6 +1,6 @@
 import ROOT
 
-Signal = ROOT.TFile('/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/2016_allsignal_new.root')
+Signal = ROOT.TFile('/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/2016_noDuplicates_new.root')
 t = Signal.Get('passedEvents')
 
 #Z+X
