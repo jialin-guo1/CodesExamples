@@ -8,32 +8,39 @@ ROOT.gStyle.SetOptStat(False)
 ggTozz2e2u = ROOT.TChain("passedEvents")
 ggTozz2e2u.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluToContinToZZTo2e2mu_FL01.root")
 ggTozz2e2u.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/GluGluToContinToZZTo2e2mu_CN01.root")
+#ggTozz2e2u.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2018/MC/GluGluToContinToZZTo2e2mu_FL01.root")
 
 ggTozz2u2t = ROOT.TChain("passedEvents")
 ggTozz2u2t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluToContinToZZTo2mu2tau_FL02.root")
 ggTozz2u2t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/GluGluToContinToZZTo2mu2tau_CN01.root")
+#ggTozz2u2t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2018/MC/GluGluToContinToZZTo2mu2tau_CN01.root")
 
 ggTozz2e2t = ROOT.TChain("passedEvents")
 ggTozz2e2t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluToContinToZZTo2e2tau_FL01.root")
 ggTozz2e2t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/GluGluToContinToZZTo2e2tau_CN01.root")
+#ggTozz2e2t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2018/MC/GluGluToContinToZZTo2e2tau_CN01.root")
 
 ggTozz4e = ROOT.TChain("passedEvents")
 ggTozz4e.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluToContinToZZTo4e_FL01.root")
 ggTozz4e.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/GluGluToContinToZZTo4e_CN01.root")
+#ggTozz4e.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2018/MC/GluGluToContinToZZTo4e_CN01.root")
 
 ggTozz4u = ROOT.TChain("passedEvents")
 ggTozz4u.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluToContinToZZTo4mu_FL02.root")
 ggTozz4u.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/GluGluToContinToZZTo4mu_CN01.root")
+#ggTozz4u.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2018/MC/GluGluToContinToZZTo4mu_CN01.root")
 
 ggTozz4t = ROOT.TChain("passedEvents")
 ggTozz4t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluToContinToZZTo4tau_FL01.root")
 ggTozz4t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/GluGluToContinToZZTo4tau_CN01.root")
+#ggTozz4t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2018/MC/GluGluToContinToZZTo4tau_CN01.root")
 
 qqTozz = ROOT.TChain("passedEvents")
 #qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL04.root")
 #qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL02.root")
 qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/ZZTo4L_FLALL.root")
 qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/ZZTo4L_FL01.root")
+#qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2018/MC/ZZTo4L_CN01.root")
 
 #qqTozz0 = ROOT.TChain("passedEvents")
 #qqTozz0.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL02.root")
@@ -41,27 +48,33 @@ qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/ZZTo4L_FL01.roo
 DataSim_gg = ROOT.TChain("passedEvents")
 DataSim_gg.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluHToZZTo4L*.root")
 DataSim_gg.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/GluGluHToZZTo4L_CN01.root")
+#DataSim_gg.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2018/MC/GluGluHToZZTo4L_CN01.root")
 
 DataSim_qq = ROOT.TChain("passedEvents")
 DataSim_qq.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/VBF_HToZZTo4L*.root")
 DataSim_qq.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/VBF_HToZZTo4L_CN01.root")
+#DataSim_qq.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2018/MC/VBF_HToZZTo4L_CN01.root")
 
 DataSim_WplusH = ROOT.TChain("passedEvents")
 DataSim_WplusH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/WplusH*.root")
 DataSim_WplusH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/WplusH_HToZZTo4L_CN01.root")
+#DataSim_WplusH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2018/MC/WplusH_HToZZTo4L_CN01.root")
 
 DataSim_WminH = ROOT.TChain("passedEvents")
 DataSim_WminH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/WminusH*.root")
-DataSim_WminH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/WplusH_HToZZTo4L_CN01.root")
+DataSim_WminH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/WminusH_HToZZTo4L_CN01.root")
+#DataSim_WminH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2018/MC/WminusH_HToZZTo4L_CN01.root")
 
 
 DataSim_ZH = ROOT.TChain("passedEvents")
 DataSim_ZH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/ZH_HToZZ*.root")
 DataSim_ZH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/ZH_HToZZ_4L_CN01.root")
+#DataSim_ZH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2018/MC/ZH_HToZZ_4L_CN01.root")
 
 DataSim_ttH = ROOT.TChain("passedEvents")
 DataSim_ttH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/ZH_HToZZ*.root")
 DataSim_ttH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/ttH_HToZZ_CN01.root")
+#DataSim_ttH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2018/MC/ttH_HToZZ_CN01.root")
 
 
 #Signal = ROOT.TFile('/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/2016_allsignal_new.root')
