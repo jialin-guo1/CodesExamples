@@ -148,7 +148,7 @@ gg4e16.GetYaxis().SetTitle("Events / 2 GeV")
 gg4e17 = ROOT.TH1D("gg->ggTozz4e7","Backgrund(2016)",50,70,170)
 gg4e17.SetFillColor(ROOT.kBlue)
 gg4e17.GetYaxis().SetTitle("Events / 2 GeV")
-gg4e17 = ROOT.TH1D("gg->ggTozz4e8","Backgrund(2016)",50,70,170)
+gg4e18 = ROOT.TH1D("gg->ggTozz4e8","Backgrund(2016)",50,70,170)
 gg4e18.SetFillColor(ROOT.kBlue)
 gg4e18.GetYaxis().SetTitle("Events / 2 GeV")
 
