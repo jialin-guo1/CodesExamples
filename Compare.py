@@ -143,7 +143,7 @@ Data.SetLineWidth(1)
 
 #Loop over all the events and fill histogram
 for ievent,event in enumerate(ggTozz2e2u):
-    gg2e2u.Fill(event.H_FSR,35.9*1000*0.0039*event.weight*event.k_gg/event.corss)
+    gg2e2u.Fill(event.H_FSR,35.9*1000*0.0039*event.weight*event.k_gg/event.cross)
 
 for ievent,event in enumerate(ggTozz2e2t):
     gg2e2t.Fill(event.H_FSR,35.9*1000*0.00319*event.weight*event.k_gg/event.cross)
