@@ -366,7 +366,7 @@ for ievent,event in enumerate(t):
 #Sim_gg.Scale(35.9*12.18)
 #Sim_qq.Scale(35.9*1.044)
 
-Sim = ROOT.TH1D("Sim","Backgrund(2016)",50,70,170)
+Sim = ROOT.TH1D("Sim","Backgrund(2016)",45,75,165)
 Sim.SetFillColor(ROOT.kRed)
 Sim.Sumw2()
 Sim.Add(Sim_gg16,Sim_qq16)
@@ -412,7 +412,7 @@ ggSum.Add(ggSum,gg4e18)
 ggSum.Add(ggSum,gg4u18)
 ggSum.Add(ggSum,gg4t18)
 
-qqSum = ROOT.TH1D("qqSum","Backgrund(2016)",50,70,170)
+qqSum = ROOT.TH1D("qqSum","Backgrund(2016)",45,75,165)
 qqSum.SetFillColor(7)
 qqSum.Add(qq16,qq17)
 qqSum.Add(qqSum,qq18)
