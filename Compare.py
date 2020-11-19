@@ -77,7 +77,7 @@ DataSim_WplusH16 = ROOT.TChain("passedEvents")
 DataSim_WplusH16.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/WplusH*.root")
 DataSim_WplusH17 = ROOT.TChain("passedEvents")
 DataSim_WplusH17.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/WplusH_HToZZTo4L_CN01.root")
-DataSim_WplusH17 = ROOT.TChain("passedEvents")
+DataSim_WplusH18 = ROOT.TChain("passedEvents")
 DataSim_WplusH18.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2018/MC/WplusH_HToZZTo4L_CN01.root")
 
 DataSim_WminH16 = ROOT.TChain("passedEvents")
