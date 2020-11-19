@@ -281,8 +281,12 @@ for ievent,event in enumerate(ggTozz2u2t17):
 for ievent,event in enumerate(ggTozz2u2t18):
     gg2u2t18.Fill(event.H_FSR,59.7*1000*0.00319*event.weight*event.k_gg/event.cross)
 
-for ievent,event in enumerate(ggTozz4e):
-    gg4e.Fill(event.H_FSR,35.9*1000*0.00159*event.weight*event.k_gg/event.cross)
+for ievent,event in enumerate(ggTozz4e16):
+    gg4e16.Fill(event.H_FSR,35.9*1000*0.00159*event.weight*event.k_gg/event.cross)
+for ievent,event in enumerate(ggTozz4e17):
+    gg4e17.Fill(event.H_FSR,41.5*1000*0.00159*event.weight*event.k_gg/event.cross)
+for ievent,event in enumerate(ggTozz4e18):
+    gg4e18.Fill(event.H_FSR,59.7*1000*0.00159*event.weight*event.k_gg/event.cross)
 
 for ievent,event in enumerate(ggTozz4u16):
     gg4u16.Fill(event.H_FSR,35.9*1000*0.00159*event.weight*event.k_gg/event.cross)
