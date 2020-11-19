@@ -7,53 +7,68 @@ ROOT.gStyle.SetOptStat(False)
 # input file and get tree
 ggTozz2e2u = ROOT.TChain("passedEvents")
 ggTozz2e2u.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluToContinToZZTo2e2mu_FL01.root")
+ggTozz2e2u.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/GluGluToContinToZZTo2e2mu_CN01.root")
 
 ggTozz2u2t = ROOT.TChain("passedEvents")
 ggTozz2u2t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluToContinToZZTo2mu2tau_FL02.root")
+ggTozz2u2t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/GluGluToContinToZZTo2mu2tau_CN01.root.root")
 
 ggTozz2e2t = ROOT.TChain("passedEvents")
 ggTozz2e2t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluToContinToZZTo2e2tau_FL01.root")
+ggTozz2e2t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/GluGluToContinToZZTo2e2tau_CN01.root")
 
 ggTozz4e = ROOT.TChain("passedEvents")
 ggTozz4e.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluToContinToZZTo4e_FL01.root")
+ggTozz4e.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/GluGluToContinToZZTo4e_CN01.root")
 
 ggTozz4u = ROOT.TChain("passedEvents")
 ggTozz4u.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluToContinToZZTo4mu_FL02.root")
+ggTozz4u.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/GluGluToContinToZZTo4mu_CN01.root")
 
 ggTozz4t = ROOT.TChain("passedEvents")
 ggTozz4t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluToContinToZZTo4tau_FL01.root")
+ggTozz4t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/GluGluToContinToZZTo4tau_CN01.root")
 
 qqTozz = ROOT.TChain("passedEvents")
 #qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL04.root")
 #qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL02.root")
 qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/ZZTo4L_FLALL.root")
+qqTozz.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/ZZTo4L_FL01.root")
 
 #qqTozz0 = ROOT.TChain("passedEvents")
 #qqTozz0.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/ZZTo4L_FL02.root")
 
 DataSim_gg = ROOT.TChain("passedEvents")
 DataSim_gg.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluHToZZTo4L*.root")
+DataSim_gg.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/GluGluHToZZTo4L_CN01.root")
 
 DataSim_qq = ROOT.TChain("passedEvents")
 DataSim_qq.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/VBF_HToZZTo4L*.root")
+DataSim_qq.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/VBF_HToZZTo4L_CN01.root")
 
 DataSim_WplusH = ROOT.TChain("passedEvents")
 DataSim_WplusH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/WplusH*.root")
+DataSim_WplusH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/WplusH_HToZZTo4L_CN01.root")
 
 DataSim_WminH = ROOT.TChain("passedEvents")
 DataSim_WminH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/WminusH*.root")
+DataSim_WminH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/WplusH_HToZZTo4L_CN01.root")
+
 
 DataSim_ZH = ROOT.TChain("passedEvents")
 DataSim_ZH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/ZH_HToZZ*.root")
+DataSim_ZH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/ZH_HToZZ_4L_CN01.root")
 
 DataSim_ttH = ROOT.TChain("passedEvents")
 DataSim_ttH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/ZH_HToZZ*.root")
+DataSim_ttH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/ttH_HToZZ_CN01.root")
+
 
 #Signal = ROOT.TFile('/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/2016_allsignal_new.root')
 #t = Signal.Get('passedEvents')
 t = ROOT.TChain("passedEvents")
 t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/2016_noDuplicates_new.root")
-#t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/2017_noDuplicates_new.root")
+t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/2017_noDuplicates_new.root")
 #t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2018/2018_noDuplicates_new.root")
 
 # book histogram and canvas
@@ -128,25 +143,25 @@ Data.SetLineWidth(1)
 
 #Loop over all the events and fill histogram
 for ievent,event in enumerate(ggTozz2e2u):
-    gg2e2u.Fill(event.H_FSR,35.9*1000*event.weight*event.k_gg)
+    gg2e2u.Fill(event.H_FSR,35.9*1000*0.0039*event.weight*event.k_gg/event.corss)
 
 for ievent,event in enumerate(ggTozz2e2t):
-    gg2e2t.Fill(event.H_FSR,35.9*1000*0.00319*event.weight*event.k_gg)
+    gg2e2t.Fill(event.H_FSR,35.9*1000*0.00319*event.weight*event.k_gg/event.cross)
 
 for ievent,event in enumerate(ggTozz2u2t):
-    gg2u2t.Fill(event.H_FSR,35.9*1000*0.00319*event.weight*event.k_gg)
+    gg2u2t.Fill(event.H_FSR,35.9*1000*0.00319*event.weight*event.k_gg/event.cross)
 
 for ievent,event in enumerate(ggTozz4e):
-    gg4e.Fill(event.H_FSR,35.9*1000*event.weight*event.k_gg)
+    gg4e.Fill(event.H_FSR,35.9*1000*0.00159*event.weight*event.k_gg/event.cross)
 
 for ievent,event in enumerate(ggTozz4u):
-    gg4u.Fill(event.H_FSR,35.9*1000*event.weight*event.k_gg)
+    gg4u.Fill(event.H_FSR,35.9*1000*0.00159*event.weight*event.k_gg/event.cross)
 
 for ievent,event in enumerate(ggTozz4t):
-    gg4t.Fill(event.H_FSR,35.9*1000*0.00159*event.weight*event.k_gg)
+    gg4t.Fill(event.H_FSR,35.9*1000*0.00159*event.weight*event.k_gg/event.cross)
 
 for ievent,event in enumerate(qqTozz):
-    qq.Fill(event.H_FSR,35.9*1000*event.weight*event.k_qq_qcd_M*event.k_qq_ewk)
+    qq.Fill(event.H_FSR,35.9*1000*1.256*event.weight*event.k_qq_qcd_M*event.k_qq_ewk/event.cross)
 
 #for ievent,event in enumerate(qqTozz0):
 #    qq0.Fill(event.H_FSR,35.9*1000*event.weight*event.k_qq_qcd_M*event.k_qq_ewk)
@@ -252,7 +267,7 @@ hstack.Draw("same histo")
 #ggSum.Draw("same histo")
 leg.Draw()
 Data.Draw("same E1")
-c.SaveAs("result2016.png")
+c.SaveAs("result2017.png")
 
 #qq.Draw("histo")
 #Data.Draw("same E1")
