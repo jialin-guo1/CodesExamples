@@ -53,7 +53,7 @@ DataSim_gg.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2018/MC/GluGluHToZZ
 DataSim_qq = ROOT.TChain("passedEvents")
 DataSim_qq.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/VBF_HToZZTo4L*.root")
 DataSim_qq.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/VBF_HToZZTo4L_CN01.root")
-#DataSim_qq.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2018/MC/VBF_HToZZTo4L_CN01.root")
+DataSim_qq.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2018/MC/VBF_HToZZTo4L_CN01.root")
 
 DataSim_WplusH = ROOT.TChain("passedEvents")
 DataSim_WplusH.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/WplusH*.root")
