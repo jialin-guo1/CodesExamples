@@ -358,13 +358,7 @@ for ievent,event in enumerate(t):
     Data.Fill(event.H_FSR)
 
 
-print "number of ggHToZZ = " + str(Sim_gg.Integral())
-print "number of VBFHToZZ = " + str(Sim_qq.Integral())
-print "number of WplusH = " + str(Sim_WplusH.Integral())
-print "number of WminH = " + str(Sim_WminH.Integral())
-print "number of ZH = " + str(Sim_ZH.Integral())
-print "number of ttH = " + str(Sim_ttH.Integral())
-print "number of data = " + str(Data.Integral())
+
 
 #normal
 #gg.Scale(35.9*1000*0.00637)
