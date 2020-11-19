@@ -11,7 +11,7 @@ ggTozz2e2u.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/GluGluToCon
 
 ggTozz2u2t = ROOT.TChain("passedEvents")
 ggTozz2u2t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluToContinToZZTo2mu2tau_FL02.root")
-ggTozz2u2t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/GluGluToContinToZZTo2mu2tau_CN01.root.root")
+ggTozz2u2t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2017/MC/GluGluToContinToZZTo2mu2tau_CN01.root")
 
 ggTozz2e2t = ROOT.TChain("passedEvents")
 ggTozz2e2t.Add("/afs/cern.ch/work/g/guoj/XToZZ_FullRunII/Data2016/MC1/GluGluToContinToZZTo2e2tau_FL01.root")
