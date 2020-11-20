@@ -455,7 +455,7 @@ hstack.Draw("same histo")
 #qq.Draw("same histo")
 #ggSum.Draw("same histo")
 leg.Draw()
-Data.Draw("same E1")
+Data.Draw("same")
 c.SaveAs("resultRunII.png")
 
 #qq.Draw("histo")
