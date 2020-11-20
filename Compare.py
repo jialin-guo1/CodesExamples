@@ -391,7 +391,7 @@ Data.Draw("E1")
 Sim.Draw("same hito")
 c.SaveAs("Sum.png")
 
-ggSum = ROOT.TH1D("ggSum","Backgrund(2016)",50,70,170)
+ggSum = ROOT.TH1D("ggSum","Backgrund(2016)",45,75,165)
 ggSum.SetFillColor(ROOT.kBlue)
 ggSum.Sumw2()
 ggSum.Add(gg2e2u16,gg2u2t16)
